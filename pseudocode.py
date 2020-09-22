@@ -20,3 +20,5 @@
 
 # The goal of the game is to defeat the villian and get the flaregun back
 # The villian can sneak up on you at anytime and deal damage
+
+# Player has 100 Health, once he loses all of it its game over
