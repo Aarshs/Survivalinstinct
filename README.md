@@ -12,5 +12,5 @@ Python 3.7 is needed to play this game. [Python 3.7](https://www.python.org/down
 python main.py
 ```
 
-## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+## Feedback
+Feedback is welcome. If there are any problems or bugs please provide feedback.
