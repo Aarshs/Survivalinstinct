@@ -18,10 +18,9 @@ characters = {
 
 # A for loop that access's the characters dictionary and prints a description.
 for character, about in characters.items():
-    print()
     for k, v in about.items():
         print(f"{character} has {v}.")
-
+    print()
 
 # Creates a dictionary that stores info about the items in each inventory.
 inventories = {
@@ -38,7 +37,7 @@ inventories = {
         "Adrenaline Shot": "consumable that increases damage by 50"}
 }
 
-print("\n\n")
+print("\n")
 for inventory, elements in inventories.items():
     message = f"{inventory} has a "
     for k, v in elements.items():
@@ -53,7 +52,7 @@ for inventory, elements in inventories.items():
 locations = {
     "Commerical Plane": "Starting area of the game",
     "Cave": "Home of Immortal Man",
-    "Jungle": "General area to explore to find items"
+    "Jungle": "General area to explore to find items",
 }
 
 # A for loop that access's the locations dictionary and prints a description.
