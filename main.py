@@ -1,24 +1,56 @@
 # Course: CS 30
 # Period: 1
-# Date created: 2020-09-18
-# Date last modified: 2020-09-21
+# Date created: 2020-09-28
+# Date last modified: 2020-09-28
 # Name: Aarsh Shah
-# Description: Creates 2 different inventories and lists them numerically
+# Description: Creates Nested Dictionary for
+# characters, inventories and locations
 
-# Creates and prints a list with tools that the user can use
-tools = ['Knife', 'Flaregun', 'Metal']
+characters = {
+    "Immortal Man": {
+        "Description": "a horrifying beast whose goal is to hunt",
+        "Health": 500},
+    "James Dave": {
+        "Description": "the sole survivor in the plane crash",
+        "Health": 250},
+}
 
-# Creates and prints a list with healing items the user can use
-heals = ['Bandages', 'Medkit', 'Painkiller']
+for character, about in characters.items():
+    print()
+    for k, v in about.items():
+        print(f"{character} has {v} {k.lower()}.")
 
-# Prints a statement with the available tools
-print('Available Tools:')
-# Creates a loop for the index and the value of each item in the tools list
-for number, tool in enumerate(tools):
-    print(f"{number + 1}: {tool}")
 
-# Prints a statement with the available heals
-print('\nAvailable Heals:')
-# Creates a loop for the index and the value of each item in the heals list
-for number, heal in enumerate(heals):
-    print(f"{number + 1}: {heal}")
+inventories = {
+    "Immortal Man": {
+        "Chainsaw": "125 Damage per hit weapon",
+        "Axe": "50 Damage per hit weapon",
+        "Flare Ammo": "ammo that James need to escape"},
+    "James Dave": {
+        "Knife": "25 Damage per hit weapon",
+        "Flaregun": "gun that holds flare ammo to signal for help",
+        "Metal Shard": "shield used to protect against attacks"},
+    "Jungle Inventory": {
+        "Sword": "weaopn that can be found by James and does 75 Damage",
+        "Adrenaline Shot": "consumable that increases damage by 50"}
+}
+
+print("\n")
+for inventory, elements in inventories.items():
+    message = f"{inventory} has a "
+    for k, v in elements.items():
+        message += f"{k}, "
+    print(message[:-2] + ".")
+    for k, v in elements.items():
+        print(f"{k} is a {v}")
+    print()
+
+print()
+locations = {
+    "Commerical Plane": "Starting area of the game",
+    "Cave": "Home of Immortal Man",
+    "Jungle": "General area to explore to find items"
+}
+
+for location, description in locations.items():
+    print(f"{location} is the {description.lower()}.")
