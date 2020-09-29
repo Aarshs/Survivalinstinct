@@ -6,21 +6,24 @@
 # Description: Creates Nested Dictionary for
 # characters, inventories and locations
 
+# Creates a dictionary that stores information about characters
 characters = {
     "Immortal Man": {
         "Description": "a horrifying beast whose goal is to hunt",
-        "Health": 500},
+        "Health": "500 health"},
     "James Dave": {
         "Description": "the sole survivor in the plane crash",
-        "Health": 250},
+        "Health": "250 health"}
 }
 
+# A for loop that access's the characters dictionary and prints a description.
 for character, about in characters.items():
     print()
     for k, v in about.items():
-        print(f"{character} has {v} {k.lower()}.")
+        print(f"{character} has {v}.")
 
 
+# Creates a dictionary that stores info about the items in each inventory.
 inventories = {
     "Immortal Man": {
         "Chainsaw": "125 Damage per hit weapon",
@@ -35,7 +38,7 @@ inventories = {
         "Adrenaline Shot": "consumable that increases damage by 50"}
 }
 
-print("\n")
+print("\n\n")
 for inventory, elements in inventories.items():
     message = f"{inventory} has a "
     for k, v in elements.items():
@@ -45,12 +48,15 @@ for inventory, elements in inventories.items():
         print(f"{k} is a {v}")
     print()
 
-print()
+
+# Creates a dictionary that stores info about the items in each inventory.
 locations = {
     "Commerical Plane": "Starting area of the game",
     "Cave": "Home of Immortal Man",
     "Jungle": "General area to explore to find items"
 }
 
+# A for loop that access's the locations dictionary and prints a description.
+print("\n")
 for location, description in locations.items():
     print(f"{location} is the {description.lower()}.")
