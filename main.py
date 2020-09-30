@@ -12,13 +12,13 @@ characters = {
     "Immortal Man": {
         "Description": "is a horrifying beast whose goal is to hunt",
         "Age": "is 235 years old",
-        "Health": "has 500 health"
+        "Health": "has 500 health",
     },
     "James Dave": {
         "Description": "is the sole survivor in the plane crash",
         "Age": "is 26 years old",
-        "Health": "has 250 health"
-    }
+        "Health": "has 250 health",
+    },
 }
 
 # A for loop that access's the characters dictionary and prints a description.
@@ -26,58 +26,58 @@ for character, about in characters.items():
     for k, v in about.items():
         print(f"{character} {v}.")
 
-
 # Creates a dictionary that stores info on different characters inventories.
 inventories = {
     "Immortal Man": {
         "Chainsaw": {
             "Description": "Large Weapon",
             "Damage": 125,
-            "Uses": 8
+            "Uses": 8,
         },
         "Axe": {
             "Description": "Medium Size Weapon",
             "Damage": 50,
-            "Uses": 12},
+            "Uses": 12,
+        },
         "Flare Ammo": {
             "Description": "The ammo that James needs to escape",
             "Damage": 0,
-            "Uses": 1
-        }
+            "Uses": 1,
+        },
     },
     "James Dave": {
         "Knife": {
             "Description": "Small Weapon",
             "Damage": 25,
-            "Uses": 15
+            "Uses": 15,
         },
         "Flaregun": {
             "Description": "Uses flare ammo to signal for help",
             "Damage": 125,
-            "Uses": "Dependent on ammo"
+            "Uses": "Dependent on ammo",
         },
         "Metal Shard": {
             "Description": "Shield used to protect against attacks",
             "Damage": -50,
-            "Uses": 10
-        }
+            "Uses": 10,
+        },
     },
     "Jungle Inventory": {
         "Sword": {
             "Description": "Large Weapon that can be found",
             "Damage": 75,
-            "Uses": 20
+            "Uses": 20,
         },
         "Adrenaline Shot": {
             "Description": "Consumable that can be found and increases damage",
             "Damage": +50,
-            "Uses": 2
-        }
-    }
+            "Uses": 2,
+        },
+    },
 }
 
 # Create multiple loops that print statements from the inventory dictionary.
-print("\n\n")
+print("\n")
 # Creates a loop that prints out each characters inventory.
 for inventory, elements in inventories.items():
     message = f"{inventory} has a "
