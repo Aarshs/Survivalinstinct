@@ -77,7 +77,7 @@ inventories = {
 }
 
 # Create multiple loops that print statements from the inventory dictionary.
-print("\n")
+print("\n\n")
 # Creates a loop that prints out each characters inventory.
 for inventory, elements in inventories.items():
     message = f"{inventory} has a "
