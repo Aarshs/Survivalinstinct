@@ -6,6 +6,7 @@
 # Description: Creates Nested Dictionary for
 # characters, inventories and locations.
 
+
 # Creates a dictionary that stores information about characters.
 characters = {
     "Immortal Man": {
@@ -26,7 +27,7 @@ for character, about in characters.items():
         print(f"{character} {v}.")
 
 
-# Creates a dictionary that stores information about inventories.
+# Creates a dictionary that stores info on different characters inventories.
 inventories = {
     "Immortal Man": {
         "Chainsaw": {
@@ -76,7 +77,7 @@ inventories = {
 }
 
 # Create multiple loops that print statements from the inventory dictionary.
-print("\n")
+print("\n\n")
 # Creates a loop that prints out each characters inventory.
 for inventory, elements in inventories.items():
     message = f"{inventory} has a "
@@ -100,6 +101,6 @@ locations = {
 }
 
 # A for loop that access's the locations dictionary and prints a description.
-print("\nThe locations of the game include:")
+print("\n\nThe locations of the game include:")
 for location, description in locations.items():
     print(f"{location} is the {description.lower()}.")
