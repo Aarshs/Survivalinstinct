@@ -26,6 +26,7 @@ for character, about in characters.items():
     for k, v in about.items():
         print(f"{character} {v}.")
 
+
 # Creates a dictionary that stores info on different characters inventories.
 inventories = {
     "Immortal Man": {
