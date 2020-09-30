@@ -1,10 +1,10 @@
 # Course: CS 30
 # Period: 1
 # Date created: 2020-09-28
-# Date last modified: 2020-09-29
+# Date last modified: 2020-09-30
 # Name: Aarsh Shah
-# Description: Creates Nested Dictionary for
-# characters, inventories and locations.
+# Description: Creates Nested Dictionary for characters,
+# inventories and locations and prints info about them.
 
 
 # Creates a dictionary that stores information about characters.
