@@ -53,7 +53,7 @@ def move():
             inventory()
         elif move == "backward":
             print("\nYou moved 500m backward")
-            print("You've found extra flashligh batteries")
+            print("You've found extra flashlight batteries")
             continue
         elif move == "right":
             print("\nYou moved 500m to the right")
@@ -91,21 +91,21 @@ def inventory():
                 print(tool)
             tool = input().lower()
             if tool == "knife":
-                print("Knife does 25 damage")
+                print("\nKnife does 25 damage")
                 move()
             elif tool == "flashlight":
-                print("Flashlight allows you to see around you")
+                print("\nFlashlight allows you to see around you")
                 move()
             elif tool == "flaregun":
-                print("Allows you to signal for help")
+                print("\nThis allows you to signal for help")
                 move()
             elif tool == "metal shard":
-                print("Allows you to delfect damage")
+                print("\nThis allows you to delfect damage")
                 move()
             elif tool == "quit":
                 quit()
             else:
-                print("Invalid type")
+                print("\nInvalid type")
                 continue
         elif type1 == "heals":
             # Gets input on what healable and prints a statement.
@@ -114,18 +114,18 @@ def inventory():
                 print(tool)
             heal = input().lower()
             if heal == "medkit":
-                print("Restores 50 Health")
+                print("\nRestores 50 Health")
                 move()
             elif heal == "Bandages":
-                print("Restores 25 Health")
+                print("\nRestores 25 Health")
                 move()
             elif heal == "painkiler":
-                print("Allows you do more damage")
+                print("\nAllows you do more damage")
                 move()
             elif heal == "quit":
                 quit()
             else:
-                print("Invalid type")
+                print("\nInvalid type")
                 continue
         elif type1 == "quit":
                 quit()
