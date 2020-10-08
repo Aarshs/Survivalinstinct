@@ -6,3 +6,4 @@ v0.0
 - added pseudocode file with comments
 - added menu file with functions
 - added map file for map game
+- added info file for info about characters, locations, and items
