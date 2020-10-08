@@ -128,7 +128,7 @@ def inventory():
                 print("\nInvalid type")
                 continue
         elif type1 == "quit":
-                quit()
+            quit()
         else:
             print("Invalid type")
 
