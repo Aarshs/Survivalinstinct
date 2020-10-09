@@ -7,7 +7,9 @@
 # different maps for the different locations of the game.
 
 from tabulate import tabulate
-from colorama import Fore, Back, Style
+from colorama import Fore, Back, Style, init
+
+init()
 
 
 def large_map():
@@ -28,8 +30,9 @@ def large_map():
 
 
 def cave_map():
+    """Function 
+    """
     boulder = (Fore.GREEN + "Boulder" + Style.RESET_ALL)
-    cave = (Fore.BLUE + "Cave" + Style.RESET_ALL)
 
     table2 = [[boulder, boulder, boulder], [boulder, "You", boulder],
               [boulder, boulder, boulder]]
