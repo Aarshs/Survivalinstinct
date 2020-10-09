@@ -50,7 +50,7 @@ def move():
         if move == "forward":
             print("\nYou moved 500m forward")
             print("You've come across Immortal Man")
-            inventory()
+            inventory2()
         elif move == "backward":
             print("\nYou moved 500m backward")
             print("You've found extra flashlight batteries")
