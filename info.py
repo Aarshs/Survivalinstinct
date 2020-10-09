@@ -112,3 +112,10 @@ def location1():
     print("\n\nThe locations of the game include:")
     for location, description in locations.items():
         print(f"{location} is the {description.lower()}.")
+
+def info():
+    character1()
+    inventory1()
+    location1()
+
+info()

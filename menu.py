@@ -17,7 +17,7 @@ def quit():
 def start():
     """A function that creates a starting menu to get info from the player.
     """
-    print("At anytime input 'quit' to end the game")
+    print("\nAt anytime input 'quit' to end the game")
     while True:
         # Asks the user if they would like to start & responds accordingly.
         start1 = input("Would you like to Start, Yes or No??\n").lower()
@@ -133,6 +133,8 @@ def inventory2():
             print("Invalid type")
 
 
-start()
-move()
-inventory2()
+def menu():
+    start()
+    move()
+
+menu()
