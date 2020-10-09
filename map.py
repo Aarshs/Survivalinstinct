@@ -7,7 +7,7 @@
 # different maps for the different locations of the game.
 
 from tabulate import tabulate
-from colorama import Fore, Back, Style, init
+from colorama import Fore, Style, init
 
 init()
 
@@ -41,7 +41,7 @@ def cave_map():
     of the villian is for the game.
     """
     # Creates boulder and structure variables with colour formatting.
-    boulder = (Fore.GREEN + "Boulder" + Style.RESET_ALL)
+    boulder = (Fore.RED + "Boulder" + Style.RESET_ALL)
     structure = (Fore.BLUE + "Structure" + Style.RESET_ALL)
     # Prints the name of the map above the table.
     print(" " * 15 + "Cave Map")
@@ -62,9 +62,9 @@ def plane_map():
     # with colour formatting.
     seats = (Fore.GREEN + "Seats" + Style.RESET_ALL)
     cockpit = (Fore.BLUE + "Cockpit" + Style.RESET_ALL)
-    storage = (Fore.RED + "Storage" + Style.RESET_ALL)
-    door = (Fore.BLUE + "Door" + Style.RESET_ALL)
-    exit = (Fore.BLUE + "Exit" + Style.RESET_ALL)
+    storage = (Fore.BLUE + "Storage" + Style.RESET_ALL)
+    door = (Fore.WHITE + "Door" + Style.RESET_ALL)
+    exit = (Fore.RED + "Exit" + Style.RESET_ALL)
     # Prints the name of the map above the table.
     print(" " * 12 + "Plane Map")
     # Creates a nested list with the different areas as elements in the array.
