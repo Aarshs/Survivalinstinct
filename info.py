@@ -65,7 +65,7 @@ class Character():
 
 
 immortal_man = Character(
-    "Immortal Man", "horrifying beast who resides in the cave", "235", "500",
+    "Immortal Man", "horrifying beast who resides in the cave", 235, 500,
     Inventory(
         Item("Chainsaw", "Large Weapon", 125, 8),
         Item("Axe", "Medium Size Weapon", 50, 12),
@@ -74,81 +74,24 @@ immortal_man = Character(
 
 print(immortal_man.inventory)
 
-james_dave = Character("James Dave"
-                       "sole survivor in the plane crash"
-                       "26", "200")
+james_dave = Character(
+    "James Dave", "sole survivor of the crash", 26, 200,
+    Inventory(
+        Item("Knife", "Small Weapon", 25, 15),
+        Item("Flaregun", "Used to signal for help", 0, 0),
+        Item("Metal Shard", "Used to deflect against attacks", -50, 10),
+    ))
 
+print(james_dave.inventory)
 
+jungle_inventory = Character(
+    "Jungle Inventory", "Items that can be found", "N/A", "N/A",
+    Inventory(
+        Item("Sword", "High Damage Weapon", 75, 20),
+        Item("Adrenaline Shot", "Consumable that increases damage", +50, 2),
+    ))
 
-def inventory1():
-    """A function that creates and prints out info about inventories.
-    """
-    # Creates a dictionary that stores info on characters inventories.
-    inventories = {
-        "Immortal Man": {
-            "Chainsaw": {
-                "Description": "Large Weapon",
-                "Damage": 125,
-                "Uses": 8,
-            },
-            "Axe": {
-                "Description": "Medium Size Weapon",
-                "Damage": 50,
-                "Uses": 12,
-            },
-            "Flare Ammo": {
-                "Description": "The ammo that James needs to escape",
-                "Damage": 0,
-                "Uses": 1,
-            },
-        },
-        "James Dave": {
-            "Knife": {
-                "Description": "Small Weapon",
-                "Damage": 25,
-                "Uses": 15,
-            },
-            "Flaregun": {
-                "Description": "Uses flare ammo to signal for help",
-                "Damage": 125,
-                "Uses": "Dependent on ammo",
-            },
-            "Metal Shard": {
-                "Description": "Shield used to protect against attacks",
-                "Damage": -50,
-                "Uses": 10,
-            },
-        },
-        "Jungle Inventory": {
-            "Sword": {
-                "Description": "Large Weapon that can be found",
-                "Damage": 75,
-                "Uses": 20,
-            },
-            "Adrenaline Shot": {
-                "Description":
-                "Consumable that can be found and increases damage",
-                "Damage": +50,
-                "Uses": 2,
-            },
-        },
-    }
-
-    # Create multiple loops that print statements from the inventory dictionary.
-    print("\n\n")
-    # Creates a loop that prints out each characters inventory.
-    for inventory, elements in inventories.items():
-        message = f"{inventory} has a "
-        for k, v in elements.items():
-            message += f"{k}, "
-        print(message[:-2] + ".")
-        # Creates a loop that prints the characteristics of each item.
-        for k, v in elements.items():
-            print(f"*{k}:")
-            print(f"    Description: {v['Description']}")
-            print(f"    Damage: {v['Damage']}")
-            print(f"    Uses: {v['Uses']}")
-        print()
+print(jungle_inventory.inventory)
 
 
 class Locations():
@@ -162,24 +105,6 @@ class Locations():
         """
 
 
-def location1():
-    # Creates a dictionary that stores info about the items in each inventory.
-    locations = {
-        "The Commerical Plane": "Starting area of the game",
-        "The Cave": "Home of Immortal Man",
-        "The Jungle": "General area to explore to find items",
-    }
-
-    # A for loop that access's the locations dictionary and prints a description.
-    print("\n\nThe locations of the game include:")
-    for location, description in locations.items():
-        print(f"{location} is the {description.lower()}.")
-
-
-def info():
-    character1()
-    inventory1()
-    location1()
-
-
-info()
+plane = ("Crashed Commerical Plane", "Starting area of the game")
+cave = ("The Cave", "Home of Immortal Man")
+jungle = ("The Jungle", "General area to explore to find items")
