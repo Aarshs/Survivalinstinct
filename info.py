@@ -6,34 +6,84 @@
 # Description: Creates Nested Dictionary for characters,
 # inventories and locations and prints info about them.
 
-def character1():
-    """A function that creates and prints out information about characters.
-    """
-    # Creates a dictionary that stores information about characters.
-    characters = {
-        "Immortal Man": {
-            "Description": "is a horrifying beast whose goal is to hunt",
-            "Age": "is 235 years old",
-            "Health": "has 500 health",
-        },
-        "James Dave": {
-            "Description": "is the sole survivor in the plane crash",
-            "Age": "is 26 years old",
-            "Health": "has 250 health",
-        },
-    }
+# class Inventory():
+#     def __init__(self, owner, item, item_description, damage, item_num_uses):
+#         self.owner = owner
+#         self.item = item
+#         self.item_description = item_description
+#         self.damage = damage
+#         self.item_num_uses = item_num_uses
 
-    # A for loop that access's the characters 
-    # dictionary and prints a description.
-    for character, about in characters.items():
-        for k, v in about.items():
-            print(f"{character} {v}.")
+#     def __str__(self):
+#         return f"""
+#         The items in {self.names}'s inventory include:
+#         {self.item} which is a {self.item_description}
+#         The {self.item} does {self.damage} damage
+#         And can be used {self.item_num_uses}
+#         """
+
+
+class Inventory():
+    def __init__(self, *items):
+        self.items = list(items)
+
+    def set_name(self, name):
+        self.name = name
+
+    def __str__(self):
+        return f"""\
+The items in {self.name}'s inventory include:
+{', '.join(map(lambda x: str(x), self.items))}
+        """
+
+
+class Item():
+    def __init__(self, name, description, damage, uses):
+        self.name = name
+        self.description = description
+        self.damage = damage
+        self.uses = uses
+
+    def __str__(self):
+        return self.name
+
+
+class Character():
+    def __init__(self, name, description, age, health, inventory):
+        self.name = name
+        self.description = description
+        self.age = age
+        self.health = health
+        inventory.set_name(name)
+        self.inventory = inventory
+
+    def __str__(self):
+        return f"""
+        {self.name} is the {self.description}. 
+        He is {self.age} years old and has {self.health} health
+        """
+
+
+immortal_man = Character(
+    "Immortal Man", "horrifying beast who resides in the cave", "235", "500",
+    Inventory(
+        Item("Chainsaw", "Large Weapon", 125, 8),
+        Item("Axe", "Medium Size Weapon", 50, 12),
+        Item("Flare Ammo", "Ammo need to use the Flaregun", 0, 1),
+    ))
+
+print(immortal_man.inventory)
+
+james_dave = Character("James Dave"
+                       "sole survivor in the plane crash"
+                       "26", "200")
+
 
 
 def inventory1():
     """A function that creates and prints out info about inventories.
     """
-    # Creates a dictionary that stores info on different characters inventories.
+    # Creates a dictionary that stores info on characters inventories.
     inventories = {
         "Immortal Man": {
             "Chainsaw": {
@@ -76,7 +126,8 @@ def inventory1():
                 "Uses": 20,
             },
             "Adrenaline Shot": {
-                "Description": "Consumable that can be found and increases damage",
+                "Description":
+                "Consumable that can be found and increases damage",
                 "Damage": +50,
                 "Uses": 2,
             },
@@ -100,6 +151,17 @@ def inventory1():
         print()
 
 
+class Locations():
+    def __init__(self, place, place_description):
+        self.place = place
+        self.place_description = place_description
+
+    def __str__(self):
+        return f"""
+        The {self.place} is the {self.place_description}
+        """
+
+
 def location1():
     # Creates a dictionary that stores info about the items in each inventory.
     locations = {
@@ -113,9 +175,11 @@ def location1():
     for location, description in locations.items():
         print(f"{location} is the {description.lower()}.")
 
+
 def info():
     character1()
     inventory1()
     location1()
+
 
 info()
