@@ -12,6 +12,17 @@ from colorama import Fore, Style, init
 init()
 
 
+class Map():
+    def __init__(self):
+
+
+class jungle(Map):
+
+class cave(Map):
+
+class plane(Map):
+
+
 def large_map():
     """Creates a function that creates a nested array and uses tabulate to
     make a organize table to repersent the main large map for the game.
