@@ -1,10 +1,10 @@
 # Course: CS 30
 # Period: 1
 # Date created: 2020-09-28
-# Date last modified: 2020-09-30
+# Date last modified: 2020-10-15
 # Name: Aarsh Shah
-# Description: Creates Nested Dictionary for characters,
-# inventories and locations and prints info about them.
+# Description: Creates classes for characters,
+# inventories and locations with characteristics about them.
 
 # class Inventory():
 #     def __init__(self, owner, item, item_description, damage, item_num_uses):
@@ -57,20 +57,23 @@ class Character():
         inventory.set_name(name)
         self.inventory = inventory
 
-    def __str__(self):
+    def __repr__(self):
         return f"""
         {self.name} is the {self.description}. 
         He is {self.age} years old and has {self.health} health
         """
 
+    def __str__(self):
+        return self.name
 
-immortal_man = Character(
-    "Immortal Man", "horrifying beast who resides in the cave", 235, 500,
-    Inventory(
-        Item("Chainsaw", "Large Weapon", 125, 8),
-        Item("Axe", "Medium Size Weapon", 50, 12),
-        Item("Flare Ammo", "Ammo need to use the Flaregun", 0, 1),
-    ))
+
+chainsaw = Item("Chainsaw", "Large Weapon", 125, 8),
+axe = Item("Axe", "Medium Size Weapon", 50, 12),
+ammo = Item("Flare Ammo", "Ammo need to use the Flaregun", 0, 1)
+
+immortal_man = Character("Immortal Man",
+                         "horrifying beast who resides in the cave", 235, 500,
+                         Inventory(chainsaw, axe, ammo))
 
 print(immortal_man.inventory)
 
@@ -99,12 +102,14 @@ class Locations():
         self.place = place
         self.place_description = place_description
 
-    def __str__(self):
-        return f"""
-        The {self.place} is the {self.place_description}
-        """
+    def location_info(self):
+        print(f"The {self.place} is the {self.place_description}")
 
 
-plane = ("Crashed Commerical Plane", "Starting area of the game")
-cave = ("The Cave", "Home of Immortal Man")
-jungle = ("The Jungle", "General area to explore to find items")
+plane = Locations("Crashed Commerical Plane", "Starting area of the game")
+cave = Locations("The Cave", "Home of Immortal Man")
+jungle = Locations("The Jungle", "General area to explore to find items")
+
+plane.location_info
+cave.location_info()
+jungle.location_info()
