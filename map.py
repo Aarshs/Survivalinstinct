@@ -32,6 +32,7 @@ class Maps:
     """
     Creates a class that creates mulptiple arrays for the maps of the game"""
     def __init__(self):
+        # The large map where the player starts
         self.large = [[jungles, jungles, jungles, jungles, jungles],
                       [jungles, immortal_man, jungles, cave, jungles],
                       [jungles, jungles, jungles, jungles, jungles],
@@ -41,10 +42,12 @@ class Maps:
                       [jungles, jungles, "Plane", jungles, jungles],
                       [jungles, jungles, jungles, jungles, jungles],
                       [jungles, jungles, jungles, jungles, jungles]]
+        # The cave map where the immortal mans house is.
         self.cave = [[boulder, boulder, boulder, structure],
                      [boulder, boulder, boulder, boulder],
                      [boulder, boulder, boulder, boulder],
                      [boulder, boulder, boulder, boulder]]
+        # The plane map where items can be salvaged
         self.plane = [[cockpit, cockpit, cockpit], [seats, seats, seats],
                       [seats, seats, seats], [door, seats, seats],
                       [storage, storage, storage], ["", exit, ""]]

@@ -35,41 +35,6 @@ def start():
             continue
 
 
-def move():
-    """A function that creates a menu for the movement of the character.
-    """
-    # Stores the info for the menu's in these variables
-    movements = ["Forward", "Backward", "Right", "Left"]
-    while True:
-        print("\nWhich way would you like to move:")
-        for movement in movements:
-            print(movement)
-        # Takes the users input on where they want to move
-        # and compares it, to print a statement.
-        move = input().lower()
-        if move == "forward":
-            print("\nYou moved 500m forward")
-            print("You've come across Immortal Man")
-            inventory2()
-        elif move == "backward":
-            print("\nYou moved 500m backward")
-            print("You've found extra flashlight batteries")
-            continue
-        elif move == "right":
-            print("\nYou moved 500m to the right")
-            print("You've found Adrenaline Pills")
-            continue
-        elif move == "left":
-            print("\nYou moved 500m to the left")
-            print("You found nothing")
-            continue
-        elif move == "quit":
-            quit()
-        else:
-            print("\nYou can't go that way")
-            continue
-
-
 def inventory2():
     """Creates a function for the inventory of the character.
     """
