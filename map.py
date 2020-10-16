@@ -19,22 +19,22 @@ cockpit = (Fore.BLUE + "Cockpit" + Style.RESET_ALL)
 storage = (Fore.BLUE + "Storage" + Style.RESET_ALL)
 door = (Fore.WHITE + "Door" + Style.RESET_ALL)
 exit = (Fore.RED + "Exit" + Style.RESET_ALL)
-
+beach = (Fore.YELLOW + "Beach" + Style.RESET_ALL)
 
 class Maps:
     """
     Creates a class that creates mulptiple arrays for the maps of the game"""
     def __init__(self):
         # The large map where the player starts
-        self.large = [[jungles, jungles, jungles, jungles, jungles],
-                      [jungles, jungles, jungles, cave, jungles],
-                      [jungles, jungles, jungles, jungles, jungles],
-                      [jungles, jungles, jungles, jungles, jungles],
-                      [jungles, jungles, jungles, jungles, jungles],
-                      [jungles, jungles, "Start", jungles, jungles],
-                      [jungles, jungles, "Plane", jungles, jungles],
-                      [jungles, jungles, jungles, jungles, jungles],
-                      [jungles, jungles, jungles, jungles, jungles]]
+        self.large = [["End", jungles, jungles, jungles, jungles],
+                      [beach, jungles, jungles, cave, jungles],
+                      [beach, jungles, jungles, jungles, jungles],
+                      [beach, jungles, jungles, jungles, jungles],
+                      [beach, jungles, jungles, jungles, jungles],
+                      [beach, jungles, "Start", jungles, jungles],
+                      [beach, jungles, "Plane", jungles, jungles],
+                      [beach, jungles, jungles, jungles, jungles],
+                      [beach, jungles, jungles, jungles, jungles]]
         # The cave map where the immortal mans house is.
         self.cave = [[boulder, boulder, boulder, structure],
                      [boulder, boulder, boulder, boulder],
