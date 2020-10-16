@@ -35,11 +35,11 @@ class Flaregun(Item):
         self.uses = 0
 
 
-flaregun = Flaregun.name
+flaregun = Flaregun()
 
 
 class Weapon(Item):
-    """Sub-Class for the weapon type of item used to deal damage"""
+    """Class for the weapon type of item used to deal damage"""
     def __init__(self, damage):
         self.damage = damage
 
@@ -57,6 +57,7 @@ knife = Knife()
 
 
 class Chainsaw(Weapon):
+    """Class for the chainsaw with name, description, damage, and uses"""
     def __init__(self):
         self.name = "Chainsaw"
         self.description = "High Damage Weapon"
@@ -68,6 +69,7 @@ chainsaw = Chainsaw()
 
 
 class Axe(Weapon):
+    """Class for the axe weapon with name, description, damage, and uses"""
     def __init__(self):
         self.name = "Axe"
         self.description = "Medium Weapon"
@@ -79,6 +81,7 @@ axe = Axe()
 
 
 class Sword(Weapon):
+    """Class for the sword weapon with name, description, damage, and uses"""
     def __init__(self):
         self.name = "Sword"
         self.description = "Large Weapon"
@@ -90,11 +93,14 @@ sword = Sword()
 
 
 class Heal(Item):
+    """Class for the characteristics of a healable item"""
     def __init__(self, add_health):
         self.add_health = add_health
 
 
 class Medkit(Heal):
+    """Class for a medkit item with name, description, uses, and the amount of 
+    health that will be added when used"""
     def __init__(self):
         self.name = "Medkit"
         self.description = "Large healable item that can be found"
@@ -106,6 +112,8 @@ medkit = Medkit()
 
 
 class Bandages(Heal):
+    """Class for a bandage item with name, description, uses, and the amount of 
+    health that will be added when used"""
     def __init__(self):
         self.name = "Bandages"
         self.description = "Small healable item that can be found"
