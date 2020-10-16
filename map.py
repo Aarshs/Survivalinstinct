@@ -26,7 +26,7 @@ beach = (Fore.YELLOW + "Beach" + Style.RESET_ALL)
 
 class Maps:
     """Creates a class that creates dictionaries and nested lists for the maps
-    of the game, as well as setting the starting postion if the player moves 
+    of the game, as well as setting the starting postion if the player moves
     to a new location"""
     def __init__(self):
         # The large map where the player starts.

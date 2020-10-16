@@ -80,8 +80,8 @@ Left, Right, Up, or Down?
             self.change_map(self.map.cave)
 
         # Allows the player to go back into large map if they are in the cave.
-        if self.current_map == self.map.cave["locations"] and self.pos[0] == 0 and self.pos[
-                1] == 0:
+        if self.current_map == self.map.cave["locations"] and self.pos[
+                0] == 0 and self.pos[1] == 0:
             self.change_map(self.map.large)
 
         # Checks if the postion of the player is where the plane is, if it
@@ -103,6 +103,7 @@ Left, Right, Up, or Down?
                 self.item_map[y][x] = None
                 self.player.inventory.append(item)
                 self.pending_message = self.player.print_inventory()
+
 
 # Calls the start function from the menu module.
 menu.start()
