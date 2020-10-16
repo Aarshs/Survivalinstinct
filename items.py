@@ -52,10 +52,6 @@ class Knife(Weapon):
         self.damage = 25
         self.uses = 15
 
-
-knife = Knife()
-
-
 class Chainsaw(Weapon):
     """Class for the chainsaw with name, description, damage, and uses"""
     def __init__(self):
@@ -63,10 +59,6 @@ class Chainsaw(Weapon):
         self.description = "High Damage Weapon"
         self.damage = 125
         self.uses = 2
-
-
-chainsaw = Chainsaw()
-
 
 class Axe(Weapon):
     """Class for the axe weapon with name, description, damage, and uses"""
@@ -76,10 +68,6 @@ class Axe(Weapon):
         self.damage = 125
         self.uses = 2
 
-
-axe = Axe()
-
-
 class Sword(Weapon):
     """Class for the sword weapon with name, description, damage, and uses"""
     def __init__(self):
@@ -87,10 +75,6 @@ class Sword(Weapon):
         self.description = "Large Weapon"
         self.damage = 75
         self.uses = 10
-
-
-sword = Sword()
-
 
 class Heal(Item):
     """Class for the characteristics of a healable item"""
@@ -107,10 +91,6 @@ class Medkit(Heal):
         self.uses = 1
         self.add_health = 100
 
-
-medkit = Medkit()
-
-
 class Bandages(Heal):
     """Class for a bandage item with name, description, uses, and the amount of 
     health that will be added when used"""
@@ -119,6 +99,3 @@ class Bandages(Heal):
         self.description = "Small healable item that can be found"
         self.uses = 1
         self.add_health = 50
-
-
-bandages = Bandages()

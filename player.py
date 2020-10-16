@@ -7,20 +7,18 @@
 
 import items
 
-inventoryad = [items.knife, items.flaregun, items.bandages]
 
 class Player:
     """Player class with inventory"""
-    def __init__(self, inventory, health, victory):
+    def __init__(self, inventory, health):
         self.inventory = inventory
         self.health = health
-        self.victory = victory
-
-    def attributes(self):
-        # The items that the player starts with and their starting health.
-        self.inventory = [items.knife(), items.flaregun(), items.bandages()]
-        self.health = 200
         self.victory = False
+
+    @staticmethod
+    def default():
+        # The items that the player starts with and their starting health.
+        return Player([items.Knife(), items.Flaregun(), items.Bandages()], 200)
 
     def alive(self):
         """The game continues as long as the player has more 0 health"""
@@ -31,8 +29,10 @@ class Player:
         # Adds the found item to the player's inventory
         self.inventory.append()
 
-def print_inventory():
+    def print_inventory(self):
         """Prints the inventory of items"""
-        print("Your Inventory:")
-        for item in inventoryad:
-            print("- " + str(item))
+        message = ""
+        message = "Your Inventory:\n"
+        for item in self.inventory:
+            message += "- " + str(item) + "\n"
+        return message

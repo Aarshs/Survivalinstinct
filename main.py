@@ -9,6 +9,7 @@
 from colorama import init
 from tabulate import tabulate
 from copy import deepcopy
+from items import Item
 from map import Maps
 from os import system
 from player import Player
@@ -22,19 +23,28 @@ class Game:
     def __init__(self):
         """Sets variables for the starting map and starting position"""
         self.map = Maps()
-        self.currentmap = self.map.large
-        self.pos = [5, 2]
+        self.change_map(self.map.large)
+        self.player = Player.default()
+        self.pending_message = ""
+
+    def change_map(self, new_map):
+        self.current_map = new_map["locations"]
+        self.item_map = new_map["items"]
+        self.pos = new_map["default_pos"]
 
     def mainmenu(self):
         """Allows for user inputs as the map is printed and reacts according to
         the users inputs"""
-        map_copy = deepcopy(self.currentmap)
+        map_copy = deepcopy(self.current_map)
 
         map_copy[self.pos[0]][self.pos[1]] = "You"
 
         system('cls')
         # Prints the map array in a fancy format using the tabulate library.
         print(tabulate(map_copy, tablefmt="fancy_grid"))
+        if self.pending_message != "":
+            print(self.pending_message)
+            self.pending_message = ""
         # Takes user input on where they want to move
         selector = input("""\
 Choose a direction (Use WASD):
@@ -57,45 +67,43 @@ Left, Right, Up, or Down?
             print("Please Try Again")
 
         # Prevents user from going out of the map.
-        if (self.pos[0] < 0 or self.pos[0] >= len(self.currentmap)
+        if (self.pos[0] < 0 or self.pos[0] >= len(self.current_map)
                 or self.pos[1] < 0
-                or self.pos[1] >= len(self.currentmap[self.pos[0]])):
+                or self.pos[1] >= len(self.current_map[self.pos[0]])):
             self.pos = old_pos
 
         # Checks if the postion of the player is where the cave is, if it
         # is then it will change the current map to the cave map.
-        if self.currentmap == self.map.large and self.pos[0] == 1 and self.pos[
-                1] == 3:
-            self.currentmap = self.map.cave
-            self.pos = [0, 1]
+        if self.current_map == self.map.large["locations"] and self.pos[
+                0] == 1 and self.pos[1] == 3:
+            self.change_map(self.map.cave)
 
         # Allows the player to go back into large map if they are in the cave.
-        if self.currentmap == self.map.cave and self.pos[0] == 0 and self.pos[
+        if self.current_map == self.map.cave["locations"] and self.pos[0] == 0 and self.pos[
                 1] == 0:
-            self.currentmap = self.map.large
-            self.pos = [2, 3]
+            self.change_map(self.map.large)
 
         # Checks if the postion of the player is where the plane is, if it
         # is then it will change the current map to the plane map.
-        if self.currentmap == self.map.large and self.pos[0] == 6 and self.pos[
-                1] == 2:
-            self.currentmap = self.map.plane
-            self.pos = [3, 0]
+        if self.current_map == self.map.large["locations"] and self.pos[
+                0] == 6 and self.pos[1] == 2:
+            self.change_map(self.map.plane)
 
         # Allows the player to go back into large map if they are in the plane.
-        if self.currentmap == self.map.plane and self.pos[0] == 5 and self.pos[
-                1] == 1:
-            self.currentmap = self.map.large
-            self.pos = [5, 2]
+        if self.current_map == self.map.plane["locations"] and self.pos[
+                0] == 5 and self.pos[1] == 1:
+            self.change_map(self.map.large)
 
         # Adds items to character if they come accross it in the map.
-        if self.currentmap == self.map.large and self.pos[0] == 2 and self.pos[
-                1] == 2:
-            # medkit = items.medkit
-            # player.inventoryad.append(medkit)
-            # player.print_inventory()
+        y, x = self.pos
+        item = self.item_map[y][x]
+        if item != None:
+            if isinstance(item, Item):
+                self.item_map[y][x] = None
+                self.player.inventory.append(item)
+                self.pending_message = self.player.print_inventory()
 
-# print(player.inventoryad)
+
 menu.start()
 init()
 game = Game()

@@ -7,6 +7,7 @@
 # different maps for the different locations of the game.
 
 from colorama import Fore, Style
+import items
 
 # Creates Creates variables for all of the various locations
 # with colour formatting.
@@ -27,21 +28,64 @@ class Maps:
     Creates a class that creates mulptiple arrays for the maps of the game"""
     def __init__(self):
         # The large map where the player starts
-        self.large = [["End", jungles, jungles, jungles, jungles],
-                      [beach, jungles, jungles, cave, jungles],
-                      [beach, jungles, jungles, jungles, jungles],
-                      [beach, jungles, jungles, jungles, jungles],
-                      [beach, jungles, jungles, jungles, jungles],
-                      [beach, jungles, "Start", jungles, jungles],
-                      [beach, jungles, "Plane", jungles, jungles],
-                      [beach, jungles, jungles, jungles, jungles],
-                      [beach, jungles, jungles, jungles, jungles]]
+        self.large = {
+            "locations": [
+                ["End", jungles, jungles, jungles, jungles],
+                [beach, jungles, jungles, cave, jungles],
+                [beach, jungles, jungles, jungles, jungles],
+                [beach, jungles, jungles, jungles, jungles],
+                [beach, jungles, jungles, jungles, jungles],
+                [beach, jungles, "Start", jungles, jungles],
+                [beach, jungles, "Plane", jungles, jungles],
+                [beach, jungles, jungles, jungles, jungles],
+                [beach, jungles, jungles, jungles, jungles],
+            ],
+            "items": [
+                [None, None, None, None, None],
+                [None, None, items.Medkit(), None, None],
+                [None, None, None, None, None],
+                [None, None, None, None, None],
+                [None, None, None, None, None],
+                [None, None, None, None, None],
+                [None, None, None, None, None],
+                [None, None, None, None, None],
+                [None, None, None, None, None],
+            ],
+            "default_pos": [5, 2]
+        }
         # The cave map where the immortal mans house is.
-        self.cave = [[exit, boulder, boulder, structure],
-                     [boulder, boulder, boulder, boulder],
-                     [boulder, boulder, boulder, boulder],
-                     [boulder, boulder, boulder, boulder]]
+        self.cave = {
+            "locations": [
+                [exit, boulder, boulder, structure],
+                [boulder, boulder, boulder, boulder],
+                [boulder, boulder, boulder, boulder],
+                [boulder, boulder, boulder, boulder],
+            ],
+            "items": [
+                [None, None, None, None],
+                [None, None, None, None],
+                [None, None, None, None],
+                [None, None, None, None],
+            ],
+            "default_pos": [0, 1]
+        }
         # The plane map where items can be salvaged
-        self.plane = [[cockpit, cockpit, cockpit], [seats, seats, seats],
-                      [seats, seats, seats], [door, seats, seats],
-                      [storage, storage, storage], [storage, exit, storage]]
+        self.plane = {
+            "locations": [
+                [cockpit, cockpit, cockpit],
+                [seats, seats, seats],
+                [seats, seats, seats],
+                [door, seats, seats],
+                [storage, storage, storage],
+                [storage, exit, storage],
+            ],
+            "items": [
+                [None, None, None],
+                [None, None, None],
+                [None, None, None],
+                [None, None, None],
+                [None, None, None],
+                [None, None, None],
+            ],
+            "default_pos": [3, 0],
+        }
