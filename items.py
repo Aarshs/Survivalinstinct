@@ -35,9 +35,6 @@ class Flaregun(Item):
         self.uses = 0
 
 
-flaregun = Flaregun()
-
-
 class Weapon(Item):
     """Class for the weapon type of item used to deal damage"""
     def __init__(self, damage):

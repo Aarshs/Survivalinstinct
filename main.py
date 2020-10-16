@@ -13,8 +13,8 @@ from items import Item
 from map import Maps
 from os import system
 from player import Player
-import items
 import menu
+import villian
 
 
 class Game:
@@ -28,6 +28,7 @@ class Game:
         self.pending_message = ""
 
     def change_map(self, new_map):
+        "Sets what the current map and position is"
         self.current_map = new_map["locations"]
         self.item_map = new_map["items"]
         self.pos = new_map["default_pos"]
@@ -36,7 +37,7 @@ class Game:
         """Allows for user inputs as the map is printed and reacts according to
         the users inputs"""
         map_copy = deepcopy(self.current_map)
-
+        # Sets the marker to indicate the player as "You"
         map_copy[self.pos[0]][self.pos[1]] = "You"
 
         system('cls')
@@ -103,9 +104,10 @@ Left, Right, Up, or Down?
                 self.player.inventory.append(item)
                 self.pending_message = self.player.print_inventory()
 
-
+# Calls the start function from the menu module.
 menu.start()
 init()
 game = Game()
+# Runs the game in a loop.
 while True:
     game.mainmenu()

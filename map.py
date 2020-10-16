@@ -8,6 +8,7 @@
 
 from colorama import Fore, Style
 import items
+import locations
 
 # Creates Creates variables for all of the various locations
 # with colour formatting.
@@ -24,10 +25,11 @@ beach = (Fore.YELLOW + "Beach" + Style.RESET_ALL)
 
 
 class Maps:
-    """
-    Creates a class that creates mulptiple arrays for the maps of the game"""
+    """Creates a class that creates dictionaries and nested lists for the maps
+    of the game, as well as setting the starting postion if the player moves 
+    to a new location"""
     def __init__(self):
-        # The large map where the player starts
+        # The large map where the player starts.
         self.large = {
             "locations": [
                 ["End", jungles, jungles, jungles, jungles],
@@ -43,7 +45,7 @@ class Maps:
             "items": [
                 [None, None, None, None, None],
                 [None, None, items.Medkit(), None, None],
-                [None, None, None, None, None],
+                [items.Sword(), None, None, None, None],
                 [None, None, None, None, None],
                 [None, None, None, None, None],
                 [None, None, None, None, None],
@@ -65,11 +67,11 @@ class Maps:
                 [None, None, None, None],
                 [None, None, None, None],
                 [None, None, None, None],
-                [None, None, None, None],
+                [None, None, None, items.Chainsaw()],
             ],
             "default_pos": [0, 1]
         }
-        # The plane map where items can be salvaged
+        # The plane map where items can be found.
         self.plane = {
             "locations": [
                 [cockpit, cockpit, cockpit],
@@ -85,7 +87,7 @@ class Maps:
                 [None, None, None],
                 [None, None, None],
                 [None, None, None],
-                [None, None, None],
+                [None, None, items.Axe()],
             ],
             "default_pos": [3, 0],
         }

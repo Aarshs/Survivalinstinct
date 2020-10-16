@@ -17,7 +17,7 @@ class Player:
 
     @staticmethod
     def default():
-        # The items that the player starts with and their starting health.
+        """The items that the player starts with and their starting health."""
         return Player([items.Knife(), items.Flaregun(), items.Bandages()], 200)
 
     def alive(self):
