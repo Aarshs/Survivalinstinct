@@ -1,7 +1,7 @@
 # Course: CS 30
 # Period: 1
 # Date created: 2020-10-07
-# Date last modified: 2020-10-15
+# Date last modified: 2020-10-16
 # Name: Aarsh Shah
 # Description: Uses tabulate and colorama libraries to create
 # different maps for the different locations of the game.
@@ -37,11 +37,11 @@ class Maps:
                       [beach, jungles, jungles, jungles, jungles],
                       [beach, jungles, jungles, jungles, jungles]]
         # The cave map where the immortal mans house is.
-        self.cave = [[boulder, boulder, boulder, structure],
+        self.cave = [[exit, boulder, boulder, structure],
                      [boulder, boulder, boulder, boulder],
                      [boulder, boulder, boulder, boulder],
                      [boulder, boulder, boulder, boulder]]
         # The plane map where items can be salvaged
         self.plane = [[cockpit, cockpit, cockpit], [seats, seats, seats],
                       [seats, seats, seats], [door, seats, seats],
-                      [storage, storage, storage], ["", exit, ""]]
+                      [storage, storage, storage], [storage, exit, storage]]
