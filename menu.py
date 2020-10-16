@@ -3,7 +3,7 @@
 # Date created: 2020-09-30
 # Date last modified: 2020-10-16
 # Name: Aarsh Shah
-# Description: Creates the starting menu that are used to start the game.
+# Description: Creates the starting menu that is used to start the game.
 
 
 def quit():

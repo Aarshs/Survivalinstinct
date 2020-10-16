@@ -4,7 +4,7 @@
 # Date last modified: 2020-10-15
 # Name: Aarsh Shah
 # Description: Creates a parent class and sub class for the creation of
-# the different locations
+# the different locations.
 
 
 class Locations():

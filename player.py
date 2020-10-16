@@ -24,11 +24,6 @@ class Player:
         """The game continues as long as the player has more 0 health"""
         return self.health > 0
 
-    def pickup_items(self):
-        """Adds items to the player's inventory when they are found"""
-        # Adds the found item to the player's inventory
-        self.inventory.append()
-
     def print_inventory(self):
         """Prints the inventory of items"""
         message = ""
