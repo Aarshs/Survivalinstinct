@@ -11,6 +11,10 @@ from tabulate import tabulate
 from copy import deepcopy
 from map import Maps
 from os import system
+from locations import Plane, Cave, Jungle, Locations
+from player import Player
+from villian import Immortalman
+
 
 
 class Game:

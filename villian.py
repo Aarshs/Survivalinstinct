@@ -10,6 +10,7 @@ import random
 
 
 class Villian():
+    """A parent-class for the characteristics of the ennemies"""
     def __init__(self, name, description, health, amount):
         self.name = name
         self.name = description
@@ -20,10 +21,13 @@ class Villian():
         return self.name
 
     def alive(self):
+        """The enemies will stay alive as 
+        long as they have more than 0 health"""
         return self.health > 0
 
 
 class Immortalman(Villian):
+    """A class for the main enemie of the game"""
     def __init__(self):
         self.name = "Immortal Man"
         self.description = "Horrifying beast who resides in the cave"
@@ -31,4 +35,6 @@ class Immortalman(Villian):
         self.amount = [10, 15, 25]
 
     def damage(self):
+        """Randomly chooses the amount of damage that Immortal Man 
+        will deal from a list"""
         return random.choice(self.amount)

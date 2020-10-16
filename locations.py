@@ -14,6 +14,7 @@ class Locations():
         self.place_description = place_description
 
     def location_info(self):
+        """Creates a print statement which tell info about a location"""
         print(f"The {self.place} is the {self.place_description}")
 
 

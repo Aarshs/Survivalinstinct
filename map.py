@@ -7,7 +7,6 @@
 # different maps for the different locations of the game.
 
 from colorama import Fore, Style
-from info import *
 
 # Creates Creates variables for all of the various locations
 # with colour formatting.
@@ -28,7 +27,7 @@ class Maps:
     def __init__(self):
         # The large map where the player starts
         self.large = [[jungles, jungles, jungles, jungles, jungles],
-                      [jungles, immortal_man, jungles, cave, jungles],
+                      [jungles, jungles, jungles, cave, jungles],
                       [jungles, jungles, jungles, jungles, jungles],
                       [jungles, jungles, jungles, jungles, jungles],
                       [jungles, jungles, jungles, jungles, jungles],
