@@ -14,27 +14,6 @@ def quit():
     exit()
 
 
-def start():
-    """A function that creates a starting menu to get info from the player.
-    """
-    print("\nAt anytime input 'quit' to end the game")
-    while True:
-        # Asks the user if they would like to start & responds accordingly.
-        start1 = input("Would you like to Start, Yes or No??\n").lower()
-        if start1 == "yes":
-            # Creates variables and takes user inputs for their names.
-            name = input("What is your full name?\n")
-            print(f"Hi, {name}")
-            username = input("What would you like your username to be?\n")
-            print(f"Welcome {username} to SURVIVAL INSTINCT!\n")
-            break
-        elif start1 in ["no", "quit"]:
-            quit()
-        else:
-            print("Please Try Again")
-            continue
-
-
 def inventory2():
     """Creates a function for the inventory of the character.
     """
@@ -57,16 +36,12 @@ def inventory2():
             tool = input().lower()
             if tool == "knife":
                 print("\nKnife does 25 damage")
-                move()
             elif tool == "flashlight":
                 print("\nFlashlight allows you to see around you")
-                move()
             elif tool == "flaregun":
                 print("\nThis allows you to signal for help")
-                move()
             elif tool == "metal shard":
                 print("\nThis allows you to delfect damage")
-                move()
             elif tool == "quit":
                 quit()
             else:
@@ -80,13 +55,10 @@ def inventory2():
             heal = input().lower()
             if heal == "medkit":
                 print("\nRestores 50 Health")
-                move()
             elif heal == "Bandages":
                 print("\nRestores 25 Health")
-                move()
             elif heal == "painkiler":
                 print("\nAllows you do more damage")
-                move()
             elif heal == "quit":
                 quit()
             else:
@@ -98,8 +70,3 @@ def inventory2():
             print("Invalid type")
 
 
-def menu():
-    start()
-    move()
-
-menu()

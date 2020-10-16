@@ -9,12 +9,6 @@
 from colorama import Fore, Style
 from info import *
 
-#     # Prints the name of the map above the table.
-#     print(" " * 12 + "Plane Map")
-
-#     # Prints the nested list in a fancy format using the tabulate library.
-#     print(tabulate(plane, tablefmt="fancy_grid"))
-
 # Creates Creates variables for all of the various locations
 # with colour formatting.
 jungles = (Fore.GREEN + "Jungle" + Style.RESET_ALL)

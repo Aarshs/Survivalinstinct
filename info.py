@@ -6,22 +6,6 @@
 # Description: Creates classes for characters,
 # inventories and locations with characteristics about them.
 
-# class Inventory():
-#     def __init__(self, owner, item, item_description, damage, item_num_uses):
-#         self.owner = owner
-#         self.item = item
-#         self.item_description = item_description
-#         self.damage = damage
-#         self.item_num_uses = item_num_uses
-
-#     def __str__(self):
-#         return f"""
-#         The items in {self.names}'s inventory include:
-#         {self.item} which is a {self.item_description}
-#         The {self.item} does {self.damage} damage
-#         And can be used {self.item_num_uses}
-#         """
-
 
 class Inventory():
     def __init__(self, *items):
@@ -75,8 +59,6 @@ immortal_man = Character("Immortal Man",
                          "horrifying beast who resides in the cave", 235, 500,
                          Inventory(chainsaw, axe, ammo))
 
-print(immortal_man.inventory)
-
 james_dave = Character(
     "James Dave", "sole survivor of the crash", 26, 200,
     Inventory(
@@ -95,21 +77,3 @@ jungle_inventory = Character(
     ))
 
 print(jungle_inventory.inventory)
-
-
-class Locations():
-    def __init__(self, place, place_description):
-        self.place = place
-        self.place_description = place_description
-
-    def location_info(self):
-        print(f"The {self.place} is the {self.place_description}")
-
-
-plane = Locations("Crashed Commerical Plane", "Starting area of the game")
-cave = Locations("The Cave", "Home of Immortal Man")
-jungle = Locations("The Jungle", "General area to explore to find items")
-
-plane.location_info
-cave.location_info()
-jungle.location_info()
