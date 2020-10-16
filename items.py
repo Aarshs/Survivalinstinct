@@ -3,7 +3,7 @@
 # Date created: 2020-09-28
 # Date last modified: 2020-10-15
 # Name: Aarsh Shah
-# Description: Creates classes and sub-classes for the different 
+# Description: Creates classes and sub-classes for the different
 # types of items.
 
 
@@ -16,17 +16,20 @@ class Item():
     def __str__(self):
         return self.name
 
+
 class Ammo(Item):
     def __init__(self):
         self.name = "Flare Ammo"
         self.description = "Ammo needed to use the Flaregun"
         self.uses = 1
 
+
 class Flaregun(Item):
     def __init__(self):
         self.name = "Flaregun"
         self.name = "Used to signal for help"
         self.uses = 0
+
 
 class Weapon(Item):
     def __init__(self, damage):

@@ -21,7 +21,7 @@ class Villian():
         return self.name
 
     def alive(self):
-        """The enemies will stay alive as 
+        """The enemies will stay alive as
         long as they have more than 0 health"""
         return self.health > 0
 
@@ -35,6 +35,6 @@ class Immortalman(Villian):
         self.amount = [10, 15, 25]
 
     def damage(self):
-        """Randomly chooses the amount of damage that Immortal Man 
+        """Randomly chooses the amount of damage that Immortal Man
         will deal from a list"""
         return random.choice(self.amount)

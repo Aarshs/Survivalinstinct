@@ -16,16 +16,14 @@ from player import Player
 from villian import Immortalman
 
 
-
 class Game:
-    """A class that allows the game to be ran taking user inputs to move your 
+    """A class that allows the game to be ran taking user inputs to move your
     character"""
     def __init__(self):
         """Sets variables for the starting map and starting position"""
         self.map = Maps()
         self.currentmap = self.map.large
         self.pos = [5, 2]
-    
 
     def start():
         """Creates a starting menu to get info from the player.
@@ -47,9 +45,8 @@ class Game:
                 print("Please Try Again")
                 continue
 
-    
     def mainmenu(self):
-        """Allows for user inputs as the map is printed and reacts according to 
+        """Allows for user inputs as the map is printed and reacts according to
         the users inputs"""
         map_copy = deepcopy(self.currentmap)
 

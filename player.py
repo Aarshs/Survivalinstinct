@@ -6,6 +6,7 @@
 # Description: Creates a class for the charcateristics of the player.
 
 import items
+import main
 
 
 class Player:
@@ -26,3 +27,10 @@ class Player:
             for item in self.inventory:
                 print("- " + str(item))
 
+    def pickup_items(self):
+        """Adds items to the player's inventory when they are found"""
+        # define the position in the ship
+        position = 1
+        # Adds the found item to the player's inventory
+        current_inventory = self.inventory
+        position.add_inventory(current_inventory)
