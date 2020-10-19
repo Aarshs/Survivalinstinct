@@ -1,7 +1,7 @@
 # Course: CS 30
 # Period: 1
 # Date created: 2020-10-15
-# Date last modified: 2020-10-15
+# Date last modified: 2020-10-19
 # Name: Aarsh Shah
 # Description: Creates a parent class and sub class for the creation of
 # the different locations.
@@ -19,7 +19,7 @@ class Locations():
 
 
 class Plane(Locations):
-    """Stores information about the plane location"""
+    """Stores information about the Plane location"""
     def __init__(self):
         self.plane = "Crashed Commerical Plane"
         self.place_description = "Starting area of the game"
@@ -33,7 +33,7 @@ class Cave(Locations):
 
 
 class Jungle(Locations):
-    """Stores information about the jungle location"""
+    """Stores information about the Jungle location"""
     def __init__(self):
         self.plane = "The Jungle"
         self.place_description = "General area to explore to find items"
