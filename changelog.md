@@ -14,4 +14,5 @@ v1.0
 - added item file with classes to store info about different type of items
 - added villian file for all the enemies that can damage the player
 - added player file for the characteristics of the player
--  added locations file for data for places
+- added locations file for data for places
+- game can now take user inputs and move around the map, collecting items
