@@ -27,7 +27,7 @@ class Villian():
 
 
 class Immortalman(Villian):
-    """A class for the main enemie of the game"""
+    """A class for the main enemy of the game"""
     def __init__(self):
         self.name = "Immortal Man"
         self.description = "Horrifying beast who resides in the cave"
