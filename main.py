@@ -95,6 +95,11 @@ Left, Right, Up, or Down?
                 0] == 5 and self.pos[1] == 1:
             self.change_map(self.map.large)
 
+        # Allows the user to quit the game if the go to the end.
+        if self.current_map == self.map.large["locations"] and self.pos[
+                0] == 0 and self.pos[1] == 0:
+                quit()
+
         # Adds items to character if they come accross it in the map.
         y, x = self.pos
         item = self.item_map[y][x]
