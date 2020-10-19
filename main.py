@@ -31,7 +31,7 @@ class Game:
         "Sets what the current map and position is"
         self.current_map = new_map["locations"]
         self.item_map = new_map["items"]
-        self.pos = new_map["default_pos"]
+        self.pos = deepcopy(new_map["default_pos"])
 
     def mainmenu(self):
         """Allows for user inputs as the map is printed and reacts according to
