@@ -6,22 +6,11 @@
 # Description: Uses tabulate and colorama libraries to create
 # different maps for the different locations of the game.
 
-from colorama import Fore, Style
+from villian import Immortalman, Knight
 import items
-import locations
+from locations import *
 
-# Creates Creates variables for all of the various locations
-# with colour formatting.
-jungles = (Fore.GREEN + "Jungle" + Style.RESET_ALL)
-cave = (Fore.BLUE + "Cave" + Style.RESET_ALL)
-boulder = (Fore.RED + "Boulder" + Style.RESET_ALL)
-structure = (Fore.BLUE + "Structure" + Style.RESET_ALL)
-seats = (Fore.GREEN + "Seats" + Style.RESET_ALL)
-cockpit = (Fore.BLUE + "Cockpit" + Style.RESET_ALL)
-storage = (Fore.BLUE + "Storage" + Style.RESET_ALL)
-door = (Fore.WHITE + "Door" + Style.RESET_ALL)
-exit = (Fore.RED + "Exit" + Style.RESET_ALL)
-beach = (Fore.YELLOW + "Beach" + Style.RESET_ALL)
+
 
 
 class Maps:
@@ -53,6 +42,17 @@ class Maps:
                 [None, None, None, None, None],
                 [None, None, None, None, None],
             ],
+            "enemies": [
+                [None, None, None, None, Knight()],
+                [None, None, None, None, None],
+                [None, None, None, None, None],
+                [None, None, None, None, None],
+                [None, None, None, None, None],
+                [None, Knight(), None, None, None],
+                [None, None, None, Knight(), None],
+                [None, None, None, None, None],
+                [None, None, None, None, None],
+            ],
             "default_pos": [5, 2]
         }
         # The cave map where the immortal mans house is.
@@ -68,6 +68,13 @@ class Maps:
                 [None, None, None, None],
                 [None, None, None, None],
                 [None, None, None, items.Chainsaw()],
+            ],
+            "enemies": [
+                [None, None, None, Immortalman()],
+                [None, Knight(), None, None],
+                [None, None, None, None],
+                [None, None, None, None],
+                [None, None, None, None],
             ],
             "default_pos": [0, 1]
         }
@@ -88,6 +95,14 @@ class Maps:
                 [None, None, None],
                 [None, None, None],
                 [None, None, items.Axe()],
+            ],
+            "enemies": [
+                [None, Knight(), None],
+                [None, None, None],
+                [None, None, None],
+                [None, None, Knight()],
+                [None, None, None],
+                [None, None, None],
             ],
             "default_pos": [3, 0],
         }

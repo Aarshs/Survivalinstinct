@@ -26,6 +26,23 @@ class Game:
         self.change_map(self.map.large)
         self.player = Player.default()
         self.pending_message = ""
+        self.map_hotspots = [{
+            "map": self.map.large,
+            "new_map": self.map.cave,
+            "pos": [1, 3],
+        }, {
+            "map": self.map.cave,
+            "new_map": self.map.large,
+            "pos": [0, 0],
+        }, {
+            "map": self.map.large,
+            "new_map": self.map.plane,
+            "pos": [6, 2],
+        }, {
+            "map": self.map.plane,
+            "new_map": self.map.large,
+            "pos": [5, 1],
+        }]
 
     def change_map(self, new_map):
         "Sets what the current map and position is"
@@ -67,47 +84,34 @@ Left, Right, Up, or Down?
         else:
             print("Please Try Again")
 
+        self.move_map()
+        self.add_items()
+
         # Prevents user from going out of the map.
         if (self.pos[0] < 0 or self.pos[0] >= len(self.current_map)
                 or self.pos[1] < 0
                 or self.pos[1] >= len(self.current_map[self.pos[0]])):
             self.pos = old_pos
 
-        # Checks if the postion of the player is where the cave is, if it
-        # is then it will change the current map to the cave map.
-        if self.current_map == self.map.large["locations"] and self.pos[
-                0] == 1 and self.pos[1] == 3:
-            self.change_map(self.map.cave)
-
-        # Allows the player to go back into large map if they are in the cave.
-        if self.current_map == self.map.cave["locations"] and self.pos[
-                0] == 0 and self.pos[1] == 0:
-            self.change_map(self.map.large)
-
-        # Checks if the postion of the player is where the plane is, if it
-        # is then it will change the current map to the plane map.
-        if self.current_map == self.map.large["locations"] and self.pos[
-                0] == 6 and self.pos[1] == 2:
-            self.change_map(self.map.plane)
-
-        # Allows the player to go back into large map if they are in the plane.
-        if self.current_map == self.map.plane["locations"] and self.pos[
-                0] == 5 and self.pos[1] == 1:
-            self.change_map(self.map.large)
-
         # Allows the user to quit the game if the go to the end.
         if self.current_map == self.map.large["locations"] and self.pos[
                 0] == 0 and self.pos[1] == 0:
-                quit()
+            quit()
 
-        # Adds items to character if they come accross it in the map.
+    def move_map(self):
+        for hotspot in self.map_hotspots:
+            if self.current_map == hotspot["map"][
+                    "locations"] and self.pos == hotspot["pos"]:
+                self.change_map(hotspot["new_map"])
+
+    def add_items(self):
+        """Adds items to character if they come accross it in the map."""
         y, x = self.pos
         item = self.item_map[y][x]
-        if item != None:
-            if isinstance(item, Item):
-                self.item_map[y][x] = None
-                self.player.inventory.append(item)
-                self.pending_message = self.player.print_inventory()
+        if item != None and isinstance(item, Item):
+            self.item_map[y][x] = None
+            self.player.inventory.append(item)
+            self.pending_message = self.player.print_inventory()
 
 
 # Calls the start function from the menu module.

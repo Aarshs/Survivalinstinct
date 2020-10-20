@@ -32,9 +32,23 @@ class Immortalman(Villian):
         self.name = "Immortal Man"
         self.description = "Horrifying beast who resides in the cave"
         self.health = 500
-        self.amount = [10, 15, 25]
+        self.amount = [10, 35, 50]
 
     def damage(self):
         """Randomly chooses the amount of damage that Immortal Man
+        will deal from a list"""
+        return random.choice(self.amount)
+
+
+class Knight(Villian):
+    """A class for the ads of the game"""
+    def __init__(self):
+        self.name = "Knights"
+        self.description = "Men on horses who deal damage"
+        self.health = 100
+        self.amount = [10, 15, 25]
+
+    def damage(self):
+        """Randomly chooses the amount of damage that the enemy
         will deal from a list"""
         return random.choice(self.amount)

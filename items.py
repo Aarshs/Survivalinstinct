@@ -31,7 +31,7 @@ class Flaregun(Item):
     """Class for flaregun item with name, description, and uses"""
     def __init__(self):
         self.name = "Flaregun"
-        self.name = "Used to signal for help"
+        self.description = "Used to signal for help"
         self.uses = 0
 
 

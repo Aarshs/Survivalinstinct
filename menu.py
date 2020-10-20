@@ -5,6 +5,7 @@
 # Name: Aarsh Shah
 # Description: Creates the starting menu that is used to start the game.
 
+from player import *
 
 def quit():
     """A function used within menu's so that the user can end the game
@@ -44,3 +45,40 @@ def start():
             else:
                 print("Please Try Again")
                 continue
+
+item = Player.default()
+
+
+def run():
+    print("You are running")
+
+
+def equip():
+    print("What do you want equip?\n")
+    print(item.print_inventory())
+
+
+
+equip()
+
+
+def menu():
+    option = input("""\
+What do you want to do?
+1. Run
+2. Equip
+> \
+""").lower()
+    if option in ("run", "1"):
+            equip()
+    elif option == "quit":
+        quit()
+    else:
+        print("Please Try again")
+
+    if option in ("equip", "2"):
+        print()
+    elif option == "quit":
+        quit()
+    else:
+        print("Please Try again")
