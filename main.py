@@ -14,7 +14,9 @@ from map import Maps
 from os import system
 from player import Player
 import menu
+import random
 import villian
+from villian import Villian
 
 
 class Game:
@@ -48,6 +50,7 @@ class Game:
         "Sets what the current map and position is"
         self.current_map = new_map["locations"]
         self.item_map = new_map["items"]
+        self.current_enemy = new_map["enemies"]
         self.pos = deepcopy(new_map["default_pos"])
 
     def mainmenu(self):
@@ -86,6 +89,7 @@ Left, Right, Up, or Down?
 
         self.move_map()
         self.add_items()
+        self.attacking()
 
         # Prevents user from going out of the map.
         if (self.pos[0] < 0 or self.pos[0] >= len(self.current_map)
@@ -111,8 +115,45 @@ Left, Right, Up, or Down?
         if item != None and isinstance(item, Item):
             self.item_map[y][x] = None
             self.player.inventory.append(item)
-            self.pending_message = self.player.print_inventory()
+            self.pending_message = self.player.inventory()
 
+    def attacking(self):
+        """Allows the players to attack the enemy ."""
+        y, x = self.pos
+        enemy = self.current_enemy[y][x]
+        if enemy != None and isinstance(enemy, Villian):
+            self.item_map[y][x] = None
+            self.pending_message = self.menu1()
+
+    def menu1(self):
+        option = input("""\
+What do you want to do?
+1. Run
+2. Equip
+> \
+""").lower()
+        if option in ("run", "1"):
+            print("You are attempting to run")
+            random.choice(self.player.random)
+            if self.player.random == "Escaped":
+                y, x = self.pos
+                self.current_enemy[y][x] = None
+                return "You got away"
+                # Add code to make the enemy die/ disappear
+            elif self.player.random == "Failed":
+                option = "equip"
+        if option in ("equip", "2"):
+            print("What do you want equip?\n")
+        elif option == "quit":
+            quit()
+        else:
+            print("Please Try again")
+
+    def equip(self):
+        print(self.player.inventory())
+        self.equipped_item = input("\n>").lower()
+        if self.equipped_item == "knife":
+            return "You dealt"
 
 # Calls the start function from the menu module.
 menu.start()

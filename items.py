@@ -40,6 +40,9 @@ class Weapon(Item):
     def __init__(self, damage):
         self.damage = damage
 
+    def __str__(self):
+        """Returns the damagge of each weapon"""
+        return self.name
 
 class Knife(Weapon):
     """Class for the knife weapon with name, description, damage, and uses"""

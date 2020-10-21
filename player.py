@@ -6,19 +6,24 @@
 # Description: Creates a class for the charcateristics of the player.
 
 import items
+import random
+import villian
+from items import Weapon
 
 
 class Player:
     """Player class with inventory"""
-    def __init__(self, inventory, health):
+    def __init__(self, inventory, health, item):
         self.inventory = inventory
         self.health = health
         self.victory = False
+        self.equipped_item = item
+        self.random = ["Escaped", "Failed"]
 
     @staticmethod
     def default():
         """The items that the player starts with and their starting health."""
-        return Player([items.Knife(), items.Flaregun(), items.Bandages()], 200)
+        return Player([items.Knife(), items.Flaregun(), items.Bandages()], 200, items.Knife())
         # return Player({
         #     "Weapons": [items.Knife(), items.Flaregun()],
         #     "Heals": [items.Bandages()]},
@@ -29,7 +34,7 @@ class Player:
         """The game continues as long as the player has more 0 health"""
         return self.health > 0
 
-    def print_inventory(self):
+    def inventory(self):
         """Prints the inventory of items"""
         message = ""
         message = "Your Inventory:\n"
