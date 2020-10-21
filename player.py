@@ -24,6 +24,7 @@ class Player:
         #     "Heals": [items.Bandages()]},
         #     200
         # )
+
     def alive(self):
         """The game continues as long as the player has more 0 health"""
         return self.health > 0
