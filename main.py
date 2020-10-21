@@ -15,7 +15,6 @@ from os import system
 from player import Player
 import menu
 import random
-import villian
 from villian import Villian
 
 
@@ -115,7 +114,7 @@ Left, Right, Up, or Down?
         if item != None and isinstance(item, Item):
             self.item_map[y][x] = None
             self.player.inventory.append(item)
-            self.pending_message = self.player.inventory()
+            self.pending_message = self.player.inventory_info()
 
     def attacking(self):
         """Allows the players to attack the enemy ."""
@@ -143,17 +142,18 @@ What do you want to do?
             elif self.player.random == "Failed":
                 option = "equip"
         if option in ("equip", "2"):
-            print("What do you want equip?\n")
+            self.equip()
         elif option == "quit":
             quit()
         else:
             print("Please Try again")
 
     def equip(self):
-        print(self.player.inventory())
+        print("What do you want equip?\n")
+        print(self.player.inventory_info())
         self.equipped_item = input("\n>").lower()
-        if self.equipped_item == "knife":
-            return "You dealt"
+        if self.equipped_item in self.player.inventory:
+            print()
 
 # Calls the start function from the menu module.
 menu.start()

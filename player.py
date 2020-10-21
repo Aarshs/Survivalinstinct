@@ -34,7 +34,7 @@ class Player:
         """The game continues as long as the player has more 0 health"""
         return self.health > 0
 
-    def inventory(self):
+    def inventory_info(self):
         """Prints the inventory of items"""
         message = ""
         message = "Your Inventory:\n"
