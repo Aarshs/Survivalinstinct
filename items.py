@@ -41,7 +41,7 @@ class Weapon(Item):
             name="knife",
             description="Small Weapon",
             damage=25,
-            uses=15
+            uses=5
         )
     
     @staticmethod
