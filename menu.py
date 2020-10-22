@@ -15,6 +15,13 @@ def quit():
 def start():
         """Creates a starting menu to get info from the player.
         """
+        print("""\
+Welcome to Survival Instinct. You play as a character to who was going on a 
+trip to Brazil. Unfortunately your planes engine fails and you crash into the
+amazon rain forest. You are the sole survivor. You must survive the dangers of
+this jungle and escape by finding the radio so that you can alert
+people for help.\
+""")
         print("\nAt anytime input 'quit' to end the game")
         while True:
             # Asks the user if they would like to start & responds accordingly.

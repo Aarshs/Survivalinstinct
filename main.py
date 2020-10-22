@@ -6,16 +6,25 @@
 # Description: Imports modules/ classes and creates a map with different game
 # tiles with user inputted movement.
 
+import random
+from copy import deepcopy
+from os import system
+
 from colorama import init
 from tabulate import tabulate
-from copy import deepcopy
-from items import Item
-from map import Maps
-from os import system
-from player import Player
+
 import menu
-import random
+from items import *
+from map import Maps
+from player import Player
 from villian import Villian
+
+
+def item_usable(item):
+    if isinstance(item, (Heal, Weapon)):
+        return item.uses != 0
+    else:
+        return True
 
 
 class Game:
@@ -44,6 +53,13 @@ class Game:
             "new_map": self.map.large,
             "pos": [5, 1],
         }]
+        self.item_mappings = {
+            "knife": Weapon.Knife(),
+            "chainsaw": Weapon.Chainsaw(),
+            "sword": Weapon.Sword(),
+            "medkit": Heal.Medkit(),
+            "bandages": Heal.Bandages(),
+        }
 
     def change_map(self, new_map):
         "Sets what the current map and position is"
@@ -87,8 +103,6 @@ Left, Right, Up, or Down?
             print("Please Try Again")
 
         self.move_map()
-        self.add_items()
-        self.attacking()
 
         # Prevents user from going out of the map.
         if (self.pos[0] < 0 or self.pos[0] >= len(self.current_map)
@@ -96,10 +110,8 @@ Left, Right, Up, or Down?
                 or self.pos[1] >= len(self.current_map[self.pos[0]])):
             self.pos = old_pos
 
-        # Allows the user to quit the game if the go to the end.
-        if self.current_map == self.map.large["locations"] and self.pos[
-                0] == 0 and self.pos[1] == 0:
-            quit()
+        self.add_items()
+        self.attacking()
 
     def move_map(self):
         for hotspot in self.map_hotspots:
@@ -117,7 +129,7 @@ Left, Right, Up, or Down?
             self.pending_message = self.player.inventory_info()
 
     def attacking(self):
-        """Allows the players to attack the enemy ."""
+        """Reacts when the player encounters an enemy."""
         y, x = self.pos
         enemy = self.current_enemy[y][x]
         if enemy != None and isinstance(enemy, Villian):
@@ -125,41 +137,70 @@ Left, Right, Up, or Down?
             self.pending_message = self.menu1()
 
     def menu1(self):
-        option = input("""\
-What do you want to do?
+        y, x = self.pos
+        enemy = self.current_enemy[y][x]
+        while 1:
+            option = input(f"""\
+You have encountered a {enemy}. What do you want to do?
 1. Run
 2. Equip
 > \
 """).lower()
-        if option in ("run", "1"):
-            print("You are attempting to run")
-            random.choice(self.player.random)
-            if self.player.random == "Escaped":
-                y, x = self.pos
-                self.current_enemy[y][x] = None
-                return "You got away"
-            elif self.player.random == "Failed":
-                option = "equip"
-        if option in ("equip", "2"):
-            self.equip()
-        elif option == "quit":
-            quit()
-        else:
-            print("Please Try again")
+            if option in ("run", "1"):
+                print("You are attempting to run")
+                option = random.choice(self.player.random)
+                if option == "Escaped":
+                    return "You got away"
+                elif option == "Failed":
+                    print("You couldn't get away")
+                    return self.equip()
+            elif option in ("equip", "2"):
+                return self.equip()
+            elif option == "quit":
+                quit()
+            else:
+                print("Please Try again")
 
     def equip(self):
-        print("What do you want equip?\n")
-        print(self.player.inventory_info())
-        self.equipped_item = input("\n>").lower()
-        if self.equipped_item in self.player.inventory:
-            for item in self.equipped_item:
-            # if self.equipped_item == "Knife":
-            #     self.equipped_item = Item.Knife()
-            # if self.equipped_item == "Chainsaw":
-            #     self.equipped_item = Item.Knife()
+        y, x = self.pos
+        enemy = self.current_enemy[y][x]
+        while enemy.alive():
+            self.player.inventory = list(
+                filter(item_usable, self.player.inventory))
+            print("What do you want equip?\n")
+            print(self.player.inventory_info())
+            option = input("\n>").lower()
+            if option in [item.name for item in self.player.inventory]:
+                self.equipped_item = next(item
+                                          for item in self.player.inventory
+                                          if item.name == option)
+                print(f"You equipped {str(self.equipped_item)}")
+                if isinstance(self.equipped_item, Weapon):
+                    self.attack()
+                elif isinstance(self.equipped_item, Heal):
+                    self.heal()
+                self.player.health -= enemy.damage()
+                print(f"You now have {self.player.health} health")
+                if not self.player.alive():
+                    print("nice one dumbass")
+                    quit()
+            else:
+                print("You don't have that item")
+        return "You killed the enemy!"
+
+    def heal(self):
+        self.player.health += self.equipped_item.add_health
+        self.equipped_item.uses -= 1
 
     def attack(self):
+        y, x = self.pos
+        enemy = self.current_enemy[y][x]
+        damage = self.equipped_item.damage
+        self.equipped_item.uses -= 1
+        enemy.health -= damage
         print(f"You attacked with {self.equipped_item}")
+        print(f"The enemy has {enemy.health} health")
+
 
 # Calls the start function from the menu module.
 menu.start()

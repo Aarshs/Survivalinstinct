@@ -7,7 +7,7 @@
 # different maps for the different locations of the game.
 
 from villian import Immortalman, Knight
-import items
+from items import *
 from locations import *
 
 
@@ -18,10 +18,12 @@ class Maps:
     of the game, as well as setting the starting postion if the player moves
     to a new location"""
     def __init__(self):
+        # self.boss = Immortalman.default()
+        # self.enemy = Knight.default()
         # The large map where the player starts.
         self.large = {
             "locations": [
-                ["End", jungles, jungles, jungles, jungles],
+                [beach, jungles, jungles, jungles, jungles],
                 [beach, jungles, jungles, cave, jungles],
                 [beach, jungles, jungles, jungles, jungles],
                 [beach, jungles, jungles, jungles, jungles],
@@ -33,8 +35,8 @@ class Maps:
             ],
             "items": [
                 [None, None, None, None, None],
-                [None, None, items.Medkit(), None, None],
-                [items.Sword(), None, None, None, None],
+                [None, None, Heal.Medkit(), None, None],
+                [Weapon.Sword(), None, None, None, None],
                 [None, None, None, None, None],
                 [None, None, None, None, None],
                 [None, None, None, None, None],
@@ -67,7 +69,7 @@ class Maps:
                 [None, None, None, None],
                 [None, None, None, None],
                 [None, None, None, None],
-                [None, None, None, items.Chainsaw()],
+                [None, None, None, Weapon.Chainsaw()],
             ],
             "enemies": [
                 [None, None, None, Immortalman()],
@@ -94,7 +96,7 @@ class Maps:
                 [None, None, None],
                 [None, None, None],
                 [None, None, None],
-                [None, None, items.Axe()],
+                [None, None, Weapon.Axe()],
             ],
             "enemies": [
                 [None, Knight(), None],

@@ -6,7 +6,6 @@
 # Description: Creates classes and sub-classes for the different
 # types of items.
 
-
 class Item():
     """A parent class for the characteristic of a inventory items"""
     def __init__(self, name, description, uses):
@@ -17,90 +16,85 @@ class Item():
     def __str__(self):
         """Returns the name of each item"""
         return self.name
-
-
-class Ammo(Item):
-    """Sub-class for the characteristics of the flaregun ammo"""
-    def __init__(self):
-        self.name = "Flare Ammo"
-        self.description = "Ammo needed to use the Flaregun"
-        self.uses = 1
-
-
-class Flaregun(Item):
-    """Class for flaregun item with name, description, and uses"""
-    def __init__(self):
-        self.name = "Flaregun"
-        self.description = "Used to signal for help"
-        self.uses = 0
+    
+    def __eq__(self, other):
+        return other and self.name == other.name
+    
+    @staticmethod
+    def Radio():
+        return Item(
+            name="radio",
+            description="Used to signal for help",
+            uses=1
+        )
 
 
 class Weapon(Item):
     """Class for the weapon type of item used to deal damage"""
-    def __init__(self, damage):
+    def __init__(self, name, description, uses, damage):
+        super().__init__(name, description, uses)
         self.damage = damage
-
-    def __str__(self):
-        """Returns the damagge of each weapon"""
-        return self.name
-
-class Knife(Weapon):
-    """Class for the knife weapon with name, description, damage, and uses"""
-    def __init__(self):
-        self.name = "Knife"
-        self.description = "Small Weapon"
-        self.damage = 25
-        self.uses = 15
-
-
-class Chainsaw(Weapon):
-    """Class for the chainsaw with name, description, damage, and uses"""
-    def __init__(self):
-        self.name = "Chainsaw"
-        self.description = "High Damage Weapon"
-        self.damage = 125
-        self.uses = 2
-
-
-class Axe(Weapon):
-    """Class for the axe weapon with name, description, damage, and uses"""
-    def __init__(self):
-        self.name = "Axe"
-        self.description = "Medium Weapon"
-        self.damage = 125
-        self.uses = 2
-
-
-class Sword(Weapon):
-    """Class for the sword weapon with name, description, damage, and uses"""
-    def __init__(self):
-        self.name = "Sword"
-        self.description = "Large Weapon"
-        self.damage = 75
-        self.uses = 10
+    
+    @staticmethod
+    def Knife():
+        return Weapon(
+            name="knife",
+            description="Small Weapon",
+            damage=25,
+            uses=15
+        )
+    
+    @staticmethod
+    def Chainsaw():
+        return Weapon(
+            name="chainsaw",
+            description="High Damage Weapon",
+            damage=125,
+            uses=2
+        )
+    
+    @staticmethod
+    def Axe():
+        return Weapon(
+            name="axe",
+            description="Medium Weapon",
+            damage=125,
+            uses=2
+        )
+    
+    @staticmethod
+    def Sword():
+        return Weapon(
+            name="sword",
+            description="Large Weapon",
+            damage=75,
+            uses=10
+        )
 
 
 class Heal(Item):
     """Class for the characteristics of a healable item"""
-    def __init__(self, add_health):
+    def __init__(self, name, description, uses, add_health):
+        super().__init__(name, description, uses)
         self.add_health = add_health
-
-
-class Medkit(Heal):
-    """Class for a medkit item with name, description, uses, and the amount of
-    health that will be added when used"""
-    def __init__(self):
-        self.name = "Medkit"
-        self.description = "Large healable item that can be found"
-        self.uses = 1
-        self.add_health = 100
-
-
-class Bandages(Heal):
-    """Class for a bandage item with name, description, uses, and the amount of
-    health that will be added when used"""
-    def __init__(self):
-        self.name = "Bandages"
-        self.description = "Small healable item that can be found"
-        self.uses = 1
-        self.add_health = 50
+    
+    @staticmethod
+    def Medkit():
+        return Heal(
+            name="medkit",
+            description="Large healable item that can be found",
+            uses=1,
+            add_health=100
+        )
+    
+    @staticmethod
+    def Bandages():
+        """Method for a bandage item with name, description, uses, and the 
+        amount of health that will be added when used
+        """
+        return Heal(
+            name="bandages",
+            description="Small healable item that can be found",
+            uses=1,
+            add_health=50
+        )

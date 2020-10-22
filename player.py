@@ -5,10 +5,7 @@
 # Name: Aarsh Shah
 # Description: Creates a class for the charcateristics of the player.
 
-import items
-import random
-import villian
-from items import Weapon
+from items import *
 
 
 class Player:
@@ -23,7 +20,7 @@ class Player:
     @staticmethod
     def default():
         """The items that the player starts with and their starting health."""
-        return Player([items.Knife(), items.Flaregun(), items.Bandages()], 200, items.Knife())
+        return Player([Weapon.Knife(), Heal.Bandages()], 200, Weapon.Knife())
         # return Player({
         #     "Weapons": [items.Knife(), items.Flaregun()],
         #     "Heals": [items.Bandages()]},
