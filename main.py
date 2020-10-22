@@ -53,14 +53,7 @@ class Game:
             "new_map": self.map.large,
             "pos": [5, 1],
         }]
-        self.item_mappings = {
-            "knife": Weapon.Knife(),
-            "chainsaw": Weapon.Chainsaw(),
-            "sword": Weapon.Sword(),
-            "medkit": Heal.Medkit(),
-            "bandages": Heal.Bandages(),
-        }
-
+    
     def change_map(self, new_map):
         "Sets what the current map and position is"
         self.current_map = new_map["locations"]
