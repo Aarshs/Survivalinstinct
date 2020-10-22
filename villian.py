@@ -28,11 +28,17 @@ class Villian():
 
 class Immortalman(Villian):
     """A class for the main enemy of the game"""
-    def __init__(self):
-        self.name = "Immortal Man"
-        self.description = "Horrifying beast who resides in the cave"
-        self.health = 500
-        self.amount = [10, 35, 50]
+    # def __init__(self):
+    #     self.name = "Immortal Man"
+    #     self.description = "Horrifying beast who resides in the cave"
+    #     self.health = 500
+    #     self.amount = [10, 35, 50]
+
+    @staticmethod
+    def default():
+        return Immortalman("Immortal man",
+                           "Horrifying beast who resides in the cave", 500,
+                           [10, 35, 40, 75])
 
     def damage(self):
         """Randomly chooses the amount of damage that Immortal Man
@@ -42,12 +48,18 @@ class Immortalman(Villian):
 
 class Knight(Villian):
     """A class for the ads of the game"""
-    def __init__(self):
-        self.name = "Knights"
-        self.description = "Men on horses who deal damage"
-        self.health = 100
-        self.amount = [10, 15, 25]
+    # def __init__(self):
+    #     self.name = "Knight"
+    #     self.description = "Men on horses who deal damage"
+    #     self.health = 100
+    #     self.amount = [10, 15, 25]
 
+    @staticmethod
+    def default():
+        return Immortalman("Knight",
+                           "A noble mounted soldier", 100,
+                           [10, 15, 25])
+    
     def damage(self):
         """Randomly chooses the amount of damage that the enemy
         will deal from a list"""

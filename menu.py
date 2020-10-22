@@ -5,8 +5,6 @@
 # Name: Aarsh Shah
 # Description: Creates the starting menu that is used to start the game.
 
-from player import *
-
 def quit():
     """A function used within menu's so that the user can end the game
     """

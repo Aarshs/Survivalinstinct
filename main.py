@@ -138,7 +138,6 @@ What do you want to do?
                 y, x = self.pos
                 self.current_enemy[y][x] = None
                 return "You got away"
-                # Add code to make the enemy die/ disappear
             elif self.player.random == "Failed":
                 option = "equip"
         if option in ("equip", "2"):
@@ -153,7 +152,14 @@ What do you want to do?
         print(self.player.inventory_info())
         self.equipped_item = input("\n>").lower()
         if self.equipped_item in self.player.inventory:
-            print()
+            for item in self.equipped_item:
+            # if self.equipped_item == "Knife":
+            #     self.equipped_item = Item.Knife()
+            # if self.equipped_item == "Chainsaw":
+            #     self.equipped_item = Item.Knife()
+
+    def attack(self):
+        print(f"You attacked with {self.equipped_item}")
 
 # Calls the start function from the menu module.
 menu.start()
