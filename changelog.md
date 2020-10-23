@@ -16,3 +16,8 @@ v1.0
 - added player file for the characteristics of the player
 - added locations file for data for places
 - game can now take user inputs and move around the map, collecting items
+
+v2.0
+- the main game file is now fully functional allowing for player inputs to heal, attack, and walk around
+- add the enemy map to map file to allow the player to attack when they encounter that enemy
+- changed all the items in the item file into static methods

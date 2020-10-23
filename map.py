@@ -6,11 +6,9 @@
 # Description: Uses tabulate and colorama libraries to create
 # different maps for the different locations of the game.
 
-from villian import Immortalman, Knight
 from items import *
 from locations import *
-
-
+from villian import Immortalman, Knight
 
 
 class Maps:

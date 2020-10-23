@@ -21,11 +21,6 @@ class Player:
     def default():
         """The items that the player starts with and their starting health."""
         return Player([Weapon.Knife(), Heal.Bandages()], 200, Weapon.Knife())
-        # return Player({
-        #     "Weapons": [items.Knife(), items.Flaregun()],
-        #     "Heals": [items.Bandages()]},
-        #     200
-        # )
 
     def alive(self):
         """The game continues as long as the player has more 0 health"""

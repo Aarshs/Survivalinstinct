@@ -27,15 +27,10 @@ people for help.\
             # Asks the user if they would like to start & responds accordingly.
             start1 = input("Would you like to Start, Yes or No??\n>").lower()
             if start1 == "yes":
-                # Creates variables and takes user inputs for their names.
+                # Creates variables and takes user inputs for their name.
                 name = input("What is your full name?\n>")
                 if name != "quit":
-                    print(f"Hi, {name}")
-                else:
-                    quit()
-                username = input("What would you like your username to be?\n")
-                if username != "quit":
-                    print(f"Welcome {username} to SURVIVAL INSTINCT!\n")
+                    print(f"Hi, {name} \nWelcome to SURVIVAL INSTINCT!\n")
                 else:
                     quit()
                 begin = input("Press 'w' to begin\n>").lower()
