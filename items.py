@@ -73,13 +73,8 @@ class Weapon(Item):
     
     @staticmethod
     def Sword():
-<<<<<<< HEAD
-        """Method for the sword item with name, description, uses, and the 
-        damage that it does.
-=======
         """Method for the sword weapon with the name, description, uses, and
         the amount of damage it does.
->>>>>>> eb1bda95a472809b9dba5d106c34e9e9b11d7147
         """
         return Weapon(
             name="sword",
@@ -98,11 +93,7 @@ class Heal(Item):
     @staticmethod
     def Medkit():
         """Method for the medkit item with name, description, uses, and the 
-<<<<<<< HEAD
-        amount of health that will be added when used.
-=======
         amount of health that will be added when used
->>>>>>> eb1bda95a472809b9dba5d106c34e9e9b11d7147
         """
         return Heal(
             name="medkit",
