@@ -64,6 +64,9 @@ class Weapon(Item):
     
     @staticmethod
     def Sword():
+        """Method for the sword item with name, description, uses, and the 
+        damage that it does.
+        """
         return Weapon(
             name="sword",
             description="Large Weapon",
@@ -73,13 +76,16 @@ class Weapon(Item):
 
 
 class Heal(Item):
-    """Class for the characteristics of a healable item"""
+    """Class for the characteristics of a healable item."""
     def __init__(self, name, description, uses, add_health):
         super().__init__(name, description, uses)
         self.add_health = add_health
     
     @staticmethod
     def Medkit():
+        """Method for the medkit item with name, description, uses, and the 
+        amount of health that will be added when used.
+        """
         return Heal(
             name="medkit",
             description="Large healable item that can be found",
