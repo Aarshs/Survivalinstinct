@@ -217,6 +217,8 @@ You have encountered a {enemy}. What do you want to do?
         y, x = self.pos
         # Variable to store what enemy is in battle.
         enemy = self.enemy_map[y][x]
+        # if enemy.health == 0:
+        #     del enemy
         # Variable to store the amount of damage the equipped weapon deals.
         damage = self.equipped_item.damage
         # Remove a use off the weapon everytime its used.
@@ -225,7 +227,6 @@ You have encountered a {enemy}. What do you want to do?
         enemy.health -= damage
         print(f"You attacked with {self.equipped_item}")
         print(f"The enemy has {enemy.health} health")
-        self.gameending()
 
     def gameending(self):
         y, x = self.pos
