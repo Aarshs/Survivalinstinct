@@ -17,7 +17,7 @@ import menu
 from items import *
 from map import Maps
 from player import Player
-from villian import Villian
+from villian import Immortalman, Villian
 
 
 def item_usable(item):
@@ -225,7 +225,16 @@ You have encountered a {enemy}. What do you want to do?
         enemy.health -= damage
         print(f"You attacked with {self.equipped_item}")
         print(f"The enemy has {enemy.health} health")
+        self.gameending()
 
+    def gameending(self):
+        y, x = self.pos
+        enemy = self.enemy_map[y][x]
+        if enemy == Immortalman:
+            print("""You killed the Immortal Man!
+            He was stashing the radio in his house. 
+            YOU HAVE ESCPAED, CONGRATS""")
+            quit()
 
 # Calls the start function from the menu module.
 menu.start()

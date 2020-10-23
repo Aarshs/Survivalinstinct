@@ -56,7 +56,7 @@ class Weapon(Item):
             name="chainsaw",
             description="High Damage Weapon",
             damage=125,
-            uses=2
+            uses=10
         )
     
     @staticmethod

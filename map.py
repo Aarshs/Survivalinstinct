@@ -61,24 +61,24 @@ class Maps:
         self.cave = {
             # The visual map that the user can see.
             "locations": [
-                [exit, boulder, boulder, structure, boulder],
-                [boulder, boulder, boulder, boulder, "Massive wall"],
-                [boulder, boulder, boulder, boulder, "Massive wall"],
-                [boulder, boulder, boulder, boulder, "Massive wall"],
+                [exit, boulder, boulder, structure],
+                [boulder, boulder, boulder, boulder],
+                [boulder, boulder, boulder, boulder],
+                [boulder, boulder, boulder, boulder],
             ],
             # Item map for the postion of where the items can be found.
             "items": [
-                [None, None, None, None, Item.Radio()],
-                [None, None, None, None, None],
-                [None, None, None, None, None],
-                [None, None, None, Weapon.Chainsaw(), None],
+                [None, None, None, None],
+                [None, None, None, None],
+                [None, None, None, None],
+                [None, None, None, Weapon.Chainsaw()],
             ],
             # Enemy map for the postion of where the enemies can be found.
             "enemies": [
-                [None, None, None, Immortalman(), None],
-                [None, Knight(), None, None, None],
-                [None, None, None, None, None],
-                [None, None, None, None, None],
+                [None, None, None, Immortalman()],
+                [None, Knight(), None, None],
+                [None, None, None, None],
+                [None, None, None, None],
             ],
             # Sets the default postion of the map.
             "default_pos": [0, 1]
