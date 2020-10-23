@@ -33,6 +33,7 @@ people for help.\
                     print(f"Hi, {name} \nWelcome to SURVIVAL INSTINCT!\n")
                 else:
                     quit()
+                # Stores input to see if the user would like to start.
                 begin = input("Press 'w' to begin\n>").lower()
                 if begin == "w":
                     break

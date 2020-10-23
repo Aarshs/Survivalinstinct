@@ -16,10 +16,9 @@ class Maps:
     of the game, as well as setting the starting postion if the player moves
     to a new location"""
     def __init__(self):
-        # self.boss = Immortalman.default()
-        # self.enemy = Knight.default()
-        # The large map where the player starts.
+        # Stores the large map where the player starts.
         self.large = {
+            # The visual map that the user can see.
             "locations": [
                 [beach, jungles, jungles, jungles, jungles],
                 [beach, jungles, jungles, cave, jungles],
@@ -31,6 +30,7 @@ class Maps:
                 [beach, jungles, jungles, jungles, jungles],
                 [beach, jungles, jungles, jungles, jungles],
             ],
+            # Item map for the postion of where the items can be found.
             "items": [
                 [None, None, None, None, None],
                 [None, None, Heal.Medkit(), None, None],
@@ -42,6 +42,7 @@ class Maps:
                 [None, None, None, None, None],
                 [None, None, None, None, None],
             ],
+            # Enemy map for the postion of where the enemies can be found.
             "enemies": [
                 [None, None, None, None, Knight()],
                 [None, None, None, None, None],
@@ -53,33 +54,38 @@ class Maps:
                 [None, None, None, None, None],
                 [None, None, None, None, None],
             ],
+            # Sets the default postion of the map.
             "default_pos": [5, 2]
         }
-        # The cave map where the immortal mans house is.
+        # Stores the cave map where the immortal mans can be found.
         self.cave = {
+            # The visual map that the user can see.
             "locations": [
-                [exit, boulder, boulder, structure],
-                [boulder, boulder, boulder, boulder],
-                [boulder, boulder, boulder, boulder],
-                [boulder, boulder, boulder, boulder],
+                [exit, boulder, boulder, structure, boulder],
+                [boulder, boulder, boulder, boulder, "Massive wall"],
+                [boulder, boulder, boulder, boulder, "Massive wall"],
+                [boulder, boulder, boulder, boulder, "Massive wall"],
             ],
+            # Item map for the postion of where the items can be found.
             "items": [
-                [None, None, None, None],
-                [None, None, None, None],
-                [None, None, None, None],
-                [None, None, None, Weapon.Chainsaw()],
+                [None, None, None, None, Item.Radio()],
+                [None, None, None, None, None],
+                [None, None, None, None, None],
+                [None, None, None, Weapon.Chainsaw(), None],
             ],
+            # Enemy map for the postion of where the enemies can be found.
             "enemies": [
-                [None, None, None, Immortalman()],
-                [None, Knight(), None, None],
-                [None, None, None, None],
-                [None, None, None, None],
-                [None, None, None, None],
+                [None, None, None, Immortalman(), None],
+                [None, Knight(), None, None, None],
+                [None, None, None, None, None],
+                [None, None, None, None, None],
             ],
+            # Sets the default postion of the map.
             "default_pos": [0, 1]
         }
-        # The plane map where items can be found.
+        # Stores the plane map where supplies can be found.
         self.plane = {
+            # The visual map that the user can see.
             "locations": [
                 [cockpit, cockpit, cockpit],
                 [seats, seats, seats],
@@ -88,6 +94,7 @@ class Maps:
                 [storage, storage, storage],
                 [storage, exit, storage],
             ],
+            # Item map for the postion of where the items can be found.
             "items": [
                 [None, None, None],
                 [None, None, None],
@@ -96,6 +103,7 @@ class Maps:
                 [None, None, None],
                 [None, None, Weapon.Axe()],
             ],
+            # Enemy map for the postion of where the enemies can be found.
             "enemies": [
                 [None, Knight(), None],
                 [None, None, None],
@@ -104,5 +112,6 @@ class Maps:
                 [None, None, None],
                 [None, None, None],
             ],
+            # Sets the default postion of the map.
             "default_pos": [3, 0],
         }
