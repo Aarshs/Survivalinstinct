@@ -17,7 +17,10 @@ class Locations():
 
     def location_info(self):
         """Creates a print statement which tell info about a location"""
-        print(f"The {self.place} is the {self.place_description}")
+        print(
+            f"""You have entered the {self.place} it's the 
+            {self.place_description}"""
+        )
 
 
 class Plane(Locations):

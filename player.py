@@ -9,7 +9,7 @@ from items import *
 
 
 class Player:
-    """Player class with inventory"""
+    """Player class with inventory, health, and equipped item."""
     def __init__(self, inventory, health, item):
         self.inventory = inventory
         self.health = health
@@ -23,13 +23,14 @@ class Player:
         return Player([Weapon.Knife(), Heal.Bandages()], 200, Weapon.Knife())
 
     def alive(self):
-        """The game continues as long as the player has more 0 health"""
+        """The game continues as long as the player has more 0 health."""
         return self.health > 0
 
     def inventory_info(self):
-        """Prints the inventory of items"""
+        """Prints the inventory of items and their descriptions."""
         message = ""
         message = "Your Inventory:\n"
-        for item in self.inventory:
-            message += "- " + str(item) + "\n"
+        for self.item in self.inventory:
+            message += "- " + str(
+                self.item).title() + ":\n - " + self.item.description + "\n"
         return message

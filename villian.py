@@ -10,7 +10,8 @@ import random
 
 
 class Villian():
-    """A parent-class for the characteristics of the ennemies"""
+    """A parent-class for the characteristics of the enemies including their 
+    name, description, health and the amount of damage they can deal"""
     def __init__(self, name, description, health, amount):
         self.name = name
         self.name = description
@@ -18,6 +19,7 @@ class Villian():
         self.amount = amount
 
     def __str__(self):
+        """Returns the name of the villian."""
         return self.name
 
     def alive(self):
@@ -47,7 +49,7 @@ class Knight(Villian):
         self.description = "Men on horses who deal damage"
         self.health = 100
         self.amount = [10, 15, 25]
-    
+
     def damage(self):
         """Randomly chooses the amount of damage that the enemy
         will deal from a list"""

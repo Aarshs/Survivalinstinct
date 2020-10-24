@@ -42,7 +42,7 @@ class Weapon(Item):
         """
         return Weapon(
             name="knife",
-            description="Small Weapon",
+            description="Small Weapon that does 25 damage",
             damage=25,
             uses=5
         )
@@ -54,7 +54,7 @@ class Weapon(Item):
         """
         return Weapon(
             name="chainsaw",
-            description="High Damage Weapon",
+            description="High Damage Weapon doing 125 damage",
             damage=125,
             uses=10
         )
@@ -66,8 +66,8 @@ class Weapon(Item):
         """
         return Weapon(
             name="axe",
-            description="Medium Weapon",
-            damage=125,
+            description="Simple but effective Weapon, doing 90 damage",
+            damage=90,
             uses=2
         )
     
@@ -78,7 +78,7 @@ class Weapon(Item):
         """
         return Weapon(
             name="sword",
-            description="Large Weapon",
+            description="Large Weapon that does 75 damage",
             damage=75,
             uses=10
         )
@@ -97,7 +97,7 @@ class Heal(Item):
         """
         return Heal(
             name="medkit",
-            description="Large healable item that can be found",
+            description="Large healable item, restoring 100 health",
             uses=1,
             add_health=100
         )
@@ -109,7 +109,7 @@ class Heal(Item):
         """
         return Heal(
             name="bandages",
-            description="Small healable item that can be found",
+            description="Small healable item, restoring 50 health",
             uses=1,
             add_health=50
         )

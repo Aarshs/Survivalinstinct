@@ -32,36 +32,30 @@ class Game:
     """A class that allows the game to be ran taking user inputs to move your
     character."""
     def __init__(self):
-        """Sets variables up for the game, including the map, 
+        """Sets variables up for the game, including the map,
         pending messages, the default settings.
         """
         self.map = Maps()
         self.change_map(self.map.large)
         self.player = Player.default()
         self.pending_message = ""
-        self.map_hotspots = [
-            {
-                "map": self.map.large,
-                "new_map": self.map.cave,
-                "pos": [1, 3],
-                # "description" :,
-            },
-            {
-                "map": self.map.cave,
-                "new_map": self.map.large,
-                "pos": [0, 0],
-            },
-            {
-                "map": self.map.large,
-                "new_map": self.map.plane,
-                "pos": [6, 2],
-            },
-            {
-                "map": self.map.plane,
-                "new_map": self.map.large,
-                "pos": [5, 1],
-            }
-        ]
+        self.map_hotspots = [{
+            "map": self.map.large,
+            "new_map": self.map.cave,
+            "pos": [1, 3],
+        }, {
+            "map": self.map.cave,
+            "new_map": self.map.large,
+            "pos": [0, 0],
+        }, {
+            "map": self.map.large,
+            "new_map": self.map.plane,
+            "pos": [6, 2],
+        }, {
+            "map": self.map.plane,
+            "new_map": self.map.large,
+            "pos": [5, 1],
+        }]
 
     def change_map(self, new_map):
         """Sets what the current visual, item and enemy map and position is."""
@@ -90,7 +84,7 @@ Left, Right, Up, or Down?
 > \
 """).lower()
         # Checks to see where the user wants to move.
-        old_pos = self.pos[:]
+        self.old_pos = self.pos[:]
         if selector == "a":
             self.pos[1] += -1
         elif selector == "d":
@@ -105,15 +99,16 @@ Left, Right, Up, or Down?
             print("Please Try Again")
 
         self.move_map()
+        self.boundaries()
+        self.add_items()
+        self.attacking()
 
-        # Prevents user from going outside of the map.
+    def boundaries(self):
+        """Method to prevent the user from going outside of the map"""
         if (self.pos[0] < 0 or self.pos[0] >= len(self.current_map)
                 or self.pos[1] < 0
                 or self.pos[1] >= len(self.current_map[self.pos[0]])):
-            self.pos = old_pos
-
-        self.add_items()
-        self.attacking()
+            self.pos = self.old_pos
 
     def move_map(self):
         """Allows the user to move between the different maps of the game."""
@@ -121,6 +116,14 @@ Left, Right, Up, or Down?
             if self.current_map == hotspot["map"][
                     "locations"] and self.pos == hotspot["pos"]:
                 self.change_map(hotspot["new_map"])
+
+    def positioning(self):
+        """Method for the to store the what enemy
+        is at your current location"""
+        # Sets the positon to x and y coordinates.
+        self.y, self.x = self.pos
+        # Variable to store what enemy is in battle.
+        self.enemy = self.enemy_map[self.y][self.x]
 
     def add_items(self):
         """Adds items to character if they come accross it in the map."""
@@ -136,22 +139,20 @@ Left, Right, Up, or Down?
 
     def attacking(self):
         """Reacts when the player encounters an enemy."""
-        y, x = self.pos
-        enemy = self.enemy_map[y][x]
+        self.positioning()
         # Checks if there is an enemy in the position of the player.
-        if enemy != None and isinstance(enemy, Villian):
-            self.item_map[y][x] = None
+        if self.enemy != None and isinstance(self.enemy, Villian):
+            self.item_map[self.y][self.x] = None
             self.pending_message = self.menu1()
 
     def menu1(self):
-        """Creates the menu that is presented when the player encounters 
+        """Creates the menu that is presented when the player encounters
         an enemy."""
-        y, x = self.pos
-        enemy = self.enemy_map[y][x]
+        self.positioning()
         while 1:
             # Variable that stores the input of the players next action
             option = input(f"""\
-You have encountered a {enemy}. What do you want to do?
+You have encountered a {self.enemy}. What do you want to do?
 1. Run
 2. Equip
 > \
@@ -173,12 +174,11 @@ You have encountered a {enemy}. What do you want to do?
                 print("Please Try again")
 
     def equip(self):
-        """Method to allow the player to equip either a healable or weapon 
+        """Method to allow the player to equip either a healable or weapon
         item."""
-        y, x = self.pos
-        enemy = self.enemy_map[y][x]
+        self.positioning()
         # A while loop that runs as long as the enemy is alive.
-        while enemy.alive():
+        while self.enemy.alive():
             self.player.inventory = list(
                 filter(item_usable, self.player.inventory))
             print("What do you want equip?\n")
@@ -195,7 +195,7 @@ You have encountered a {enemy}. What do you want to do?
                     self.attack()
                 elif isinstance(self.equipped_item, Heal):
                     self.heal()
-                self.player.health -= enemy.damage()
+                self.player.health -= self.enemy.damage()
                 print(f"You now have {self.player.health} health")
                 if not self.player.alive():
                     print("You Died!")
@@ -213,10 +213,7 @@ You have encountered a {enemy}. What do you want to do?
 
     def attack(self):
         """Allows the player to attack using their equipped weapon."""
-        # Sets the positon to x and y coordinates
-        y, x = self.pos
-        # Variable to store what enemy is in battle.
-        enemy = self.enemy_map[y][x]
+        self.positioning()
         # if enemy.health == 0:
         #     del enemy
         # Variable to store the amount of damage the equipped weapon deals.
@@ -224,18 +221,18 @@ You have encountered a {enemy}. What do you want to do?
         # Remove a use off the weapon everytime its used.
         self.equipped_item.uses -= 1
         # Deals the damage to the enemies health.
-        enemy.health -= damage
+        self.enemy.health -= damage
         print(f"You attacked with {self.equipped_item}")
-        print(f"The enemy has {enemy.health} health")
+        print(f"The enemy has {self.enemy.health} health")
 
     def gameending(self):
-        y, x = self.pos
-        enemy = self.enemy_map[y][x]
-        if enemy == Immortalman:
+        self.positioning()
+        if self.enemy is Immortalman:
             print("""You killed the Immortal Man!
-            He was stashing the radio in his house. 
+            He was stashing the radio in his house.
             YOU HAVE ESCPAED, CONGRATS""")
             quit()
+
 
 # Calls the start function from the menu module.
 menu.start()

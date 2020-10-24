@@ -19,5 +19,7 @@ v1.0
 
 v2.0
 - the main game file is now fully functional allowing for player inputs to heal, attack, and walk around
-- add the enemy map to map file to allow the player to attack when they encounter that enemy
+- added the enemy map to map file to allow the player to attack when they encounter that enemy
 - changed all the items in the item file into static methods
+- add a method to the main game file to prevent errors when the player goes out of the map
+- added an method for the postioning of what enemy is at the players current location
