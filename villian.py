@@ -32,7 +32,7 @@ class Immortalman(Villian):
     """A class for the main enemy of the game"""
     def __init__(self):
         self.name = "Immortal Man"
-        self.description = "Horrifying beast who resides in the cave"
+        self.description = "horrifying beast who lives in this cave"
         self.health = 500
         self.amount = [10, 35, 50]
 
@@ -46,7 +46,7 @@ class Knight(Villian):
     """A class for the enemies of the game"""
     def __init__(self):
         self.name = "Knight"
-        self.description = "Men on horses who deal damage"
+        self.description = "noble warrior bred to protect"
         self.health = 100
         self.amount = [10, 15, 25]
 

@@ -31,6 +31,7 @@ class Player:
         message = ""
         message = "Your Inventory:\n"
         for self.item in self.inventory:
-            message += "- " + str(
-                self.item).title() + ":\n - " + self.item.description + "\n"
+            message += "- " + str(self.item).title(
+            ) + f""":\n - {self.item.description} 
+ - Uses: {self.item.uses}\n"""
         return message

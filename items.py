@@ -42,9 +42,9 @@ class Weapon(Item):
         """
         return Weapon(
             name="knife",
-            description="Small Weapon that does 25 damage",
+            description="Small Weapon that does 25 damage, it never breaks",
             damage=25,
-            uses=5
+            uses=1000000
         )
     
     @staticmethod

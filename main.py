@@ -29,8 +29,8 @@ def item_usable(item):
 
 
 class Game:
-    """A class that allows the game to be ran taking user inputs to move your
-    character."""
+    """A class that allows the game to be run taking user inputs to move your
+    character, pick up items, attack enemies and run away."""
     def __init__(self):
         """Sets variables up for the game, including the map,
         pending messages, the default settings.
@@ -63,6 +63,7 @@ class Game:
         self.item_map = new_map["items"]
         self.enemy_map = new_map["enemies"]
         self.pos = deepcopy(new_map["default_pos"])
+        self.pending_message = new_map["description"]
 
     def mainmenu(self):
         """Allows for user inputs as the map is printed and reacts according to
@@ -83,7 +84,7 @@ Choose a direction (Use WASD):
 Left, Right, Up, or Down?
 > \
 """).lower()
-        # Checks to see where the user wants to move.
+        # Checks to see where the user wants to move and reacts accordingly.
         self.old_pos = self.pos[:]
         if selector == "a":
             self.pos[1] += -1
@@ -98,16 +99,18 @@ Left, Right, Up, or Down?
         else:
             print("Please Try Again")
 
+        # Calls game methods to allow the aspects of the game to function.
         self.move_map()
         self.boundaries()
         self.add_items()
         self.attacking()
 
     def boundaries(self):
-        """Method to prevent the user from going outside of the map"""
+        """Method to prevent the user from going outside of the map."""
         if (self.pos[0] < 0 or self.pos[0] >= len(self.current_map)
                 or self.pos[1] < 0
                 or self.pos[1] >= len(self.current_map[self.pos[0]])):
+            # Moves the user back into the map if they go past the boundaries.
             self.pos = self.old_pos
 
     def move_map(self):
@@ -118,7 +121,7 @@ Left, Right, Up, or Down?
                 self.change_map(hotspot["new_map"])
 
     def positioning(self):
-        """Method for the to store the what enemy
+        """Method to store what enemy
         is at your current location"""
         # Sets the positon to x and y coordinates.
         self.y, self.x = self.pos
@@ -127,7 +130,9 @@ Left, Right, Up, or Down?
 
     def add_items(self):
         """Adds items to character if they come accross it in the map."""
+        # Sets the positon to x and y coordinates.
         y, x = self.pos
+        # Variable to store what item is being picked up in respect to the map.
         item = self.item_map[y][x]
         # Checks if there is an item in the position of the player.
         if item != None and isinstance(item, Item):
@@ -135,7 +140,8 @@ Left, Right, Up, or Down?
             # Adds the new item to the inventory.
             self.player.inventory.append(item)
             # Prints out the new inventory.
-            self.pending_message = self.player.inventory_info()
+            self.pending_message = f"""{item} was found!\n
+{self.player.inventory_info()}"""
 
     def attacking(self):
         """Reacts when the player encounters an enemy."""
@@ -143,6 +149,7 @@ Left, Right, Up, or Down?
         # Checks if there is an enemy in the position of the player.
         if self.enemy != None and isinstance(self.enemy, Villian):
             self.item_map[self.y][self.x] = None
+            # Calls the menu methood which allows the user to react.
             self.pending_message = self.menu1()
 
     def menu1(self):
@@ -152,7 +159,8 @@ Left, Right, Up, or Down?
         while 1:
             # Variable that stores the input of the players next action
             option = input(f"""\
-You have encountered a {self.enemy}. What do you want to do?
+You have encountered a {self.enemy}. He is a {self.enemy.description}.
+What do you want to do?
 1. Run
 2. Equip
 > \
@@ -190,21 +198,33 @@ You have encountered a {self.enemy}. What do you want to do?
                 self.equipped_item = next(item
                                           for item in self.player.inventory
                                           if item.name == option)
-                print(f"You equipped {str(self.equipped_item)}")
+                print(f"You equipped a{str(self.equipped_item)}")
+                # Checks to see if the chosen item is a weapon.
                 if isinstance(self.equipped_item, Weapon):
                     self.attack()
+                # Checks to see if the chosen item is a healable.
                 elif isinstance(self.equipped_item, Heal):
                     self.heal()
-                self.player.health -= self.enemy.damage()
-                print(f"You now have {self.player.health} health")
+                # Checks to see if the player has more than 0 health.
                 if not self.player.alive():
                     print("You Died!")
                     quit()
+                if not self.enemy.alive():
+                    self.enemy_map[self.y][self.x] = None
             elif option == "quit":
                 quit()
             else:
                 print("You don't have that item")
-        return "You killed the enemy!"
+        # Returns a statement if you are successful in killing the enemy.
+        if self.enemy.name == "Immortal Man":
+            print("""\
+You killed the Immortal Man!
+He was stashing the radio in his house.
+YOU HAVE ESCPAED, CONGRATS""")
+            quit()
+        else:
+            return ("You killed the enemy!")
+
 
     def heal(self):
         """Allows the player to recover health and use a healable."""
@@ -214,24 +234,19 @@ You have encountered a {self.enemy}. What do you want to do?
     def attack(self):
         """Allows the player to attack using their equipped weapon."""
         self.positioning()
-        # if enemy.health == 0:
-        #     del enemy
         # Variable to store the amount of damage the equipped weapon deals.
         damage = self.equipped_item.damage
         # Remove a use off the weapon everytime its used.
         self.equipped_item.uses -= 1
         # Deals the damage to the enemies health.
         self.enemy.health -= damage
-        print(f"You attacked with {self.equipped_item}")
-        print(f"The enemy has {self.enemy.health} health")
-
-    def gameending(self):
-        self.positioning()
-        if self.enemy is Immortalman:
-            print("""You killed the Immortal Man!
-            He was stashing the radio in his house.
-            YOU HAVE ESCPAED, CONGRATS""")
-            quit()
+        # Subtracts your health from the amount of damage the enemy dealt.
+        self.player.health -= self.enemy.damage()
+        # Prints what weapon the player attacked with
+        # and the players' and enemies current health
+        print(f"""You attacked with a {self.equipped_item}
+The enemy has {self.enemy.health} health
+You now have {self.player.health} health\n""")
 
 
 # Calls the start function from the menu module.

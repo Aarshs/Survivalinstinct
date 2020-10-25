@@ -10,7 +10,6 @@ from items import *
 from locations import *
 from villian import Immortalman, Knight
 
-
 class Maps:
     """Creates a class that creates dictionaries and nested lists for the maps
     of the game, as well as setting the starting postion if the player moves
@@ -55,7 +54,9 @@ class Maps:
                 [None, None, None, None, None],
             ],
             # Sets the default postion of the map.
-            "default_pos": [5, 2]
+            "default_pos": [5, 2],
+            "description": """Crashed Commerical Plane which is the 
+starting area of the game""",
         }
         # Stores the cave map where the immortal mans can be found.
         self.cave = {
@@ -81,7 +82,9 @@ class Maps:
                 [None, None, None, None],
             ],
             # Sets the default postion of the map.
-            "default_pos": [0, 1]
+            "default_pos": [0, 1],
+            "description": """Crashed Commerical Plane which is the 
+starting area of the game""",
         }
         # Stores the plane map where supplies can be found.
         self.plane = {
@@ -101,7 +104,7 @@ class Maps:
                 [None, None, None],
                 [None, None, None],
                 [None, None, None],
-                [None, None, Weapon.Axe()],
+                [Weapon.Axe(), None, None],
             ],
             # Enemy map for the postion of where the enemies can be found.
             "enemies": [
@@ -114,4 +117,6 @@ class Maps:
             ],
             # Sets the default postion of the map.
             "default_pos": [3, 0],
+            "description": """Crashed Commerical Plane which is the 
+starting area of the game""",
         }
