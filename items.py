@@ -1,7 +1,7 @@
 # Course: CS 30
 # Period: 1
 # Date created: 2020-09-28
-# Date last modified: 2020-10-19
+# Date last modified: 2020-10-25
 # Name: Aarsh Shah
 # Description: Creates classes and sub-classes for the different
 # types of items.
@@ -19,14 +19,6 @@ class Item():
     
     def __eq__(self, other):
         return other and self.name == other.name
-    
-    @staticmethod
-    def Radio():
-        return Item(
-            name="radio",
-            description="Used to signal for help",
-            uses=1
-        )
 
 
 class Weapon(Item):

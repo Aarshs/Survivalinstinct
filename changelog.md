@@ -23,3 +23,5 @@ v2.0
 - changed all the items in the item file into static methods
 - add a method to the main game file to prevent errors when the player goes out of the map
 - added an method for the postioning of what enemy is at the players current location
+- added code in main game file to allow for enemies to be removed from the map once they are killed
+- added code in main game file to allow for the game to end once the player completes the goal.

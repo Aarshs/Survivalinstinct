@@ -1,7 +1,7 @@
 # Course: CS 30
 # Period: 1
 # Date created: 2020-09-15
-# Date last modified: 2020-10-19
+# Date last modified: 2020-10-25
 # Name: Aarsh Shah
 # Description: Creates a class for the charcateristics of the player.
 

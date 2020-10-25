@@ -1,7 +1,7 @@
 # Course: CS 30
 # Period: 1
 # Date created: 2020-10-07
-# Date last modified: 2020-10-19
+# Date last modified: 2020-10-25
 # Name: Aarsh Shah
 # Description: Uses tabulate and colorama libraries to create
 # different maps for the different locations of the game.
@@ -55,8 +55,8 @@ class Maps:
             ],
             # Sets the default postion of the map.
             "default_pos": [5, 2],
-            "description": """Crashed Commerical Plane which is the 
-starting area of the game""",
+            "description": """Crashed Commerical Plane where important items 
+may be found""",
         }
         # Stores the cave map where the immortal mans can be found.
         self.cave = {
@@ -83,8 +83,7 @@ starting area of the game""",
             ],
             # Sets the default postion of the map.
             "default_pos": [0, 1],
-            "description": """Crashed Commerical Plane which is the 
-starting area of the game""",
+            "description": """The Cave which is the home of Immortal Man""",
         }
         # Stores the plane map where supplies can be found.
         self.plane = {
@@ -117,6 +116,6 @@ starting area of the game""",
             ],
             # Sets the default postion of the map.
             "default_pos": [3, 0],
-            "description": """Crashed Commerical Plane which is the 
-starting area of the game""",
+            "description": """The Jungle is the general area 
+to explore to find items""",
         }
