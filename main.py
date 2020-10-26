@@ -62,10 +62,11 @@ class Game:
         """Allows for user inputs as the map is printed and reacts according to
         the users inputs.
         """
+        # Makes a copy of the map array.
         map_copy = deepcopy(self.current_map)
         # Sets the marker to indicate the player as "You".
         map_copy[self.pos[0]][self.pos[1]] = "You"
-
+        # Clears the terminal screen after every new movement.
         system('cls')
         # Prints the map array in a fancy format using the tabulate library.
         print(tabulate(map_copy, tablefmt="fancy_grid"))
@@ -110,6 +111,7 @@ Left, Right, Up, or Down?
     def move_map(self):
         """Allows the user to move between the different maps of the game."""
         for hotspot in self.map_hotspots:
+            # Checks to see if the player is on a map hotspot.
             if self.current_map == hotspot["map"][
                     "locations"] and self.pos == hotspot["pos"]:
                 self.change_map(hotspot["new_map"])
@@ -161,10 +163,12 @@ What do you want to do?
 """).lower()
             if option in ("run", "1"):
                 print("You are attempting to run")
-                # Variable then chooses a random choice from the random list.
+                # Variable that chooses a random choice from the random list.
                 option = random.choice(self.player.random)
+                # If the choice is 'escaped', it lets the user escape.
                 if option == "Escaped":
                     return "You got away"
+                # If the choice is 'Failed', it forces the user to fight.
                 elif option == "Failed":
                     print("You couldn't get away")
                     return self.equip()
@@ -182,7 +186,7 @@ What do you want to do?
         self.positioning()
         # A while loop that runs as long as the enemy is alive.
         while self.enemy.alive():
-            # Checks to see if the items in the inventory still have uses.
+            # Checks to see if the items in the inventory still has uses.
             self.player.inventory = list(
                 filter(item_usable, self.player.inventory))
             # Asks the user what they want to equip from their inventory.
@@ -226,8 +230,11 @@ YOU HAVE ESCPAED, CONGRATS""")
 
     def heal(self):
         """Allows the player to recover health and use a healable."""
+        # Adds points to users health.
         self.player.health += self.equipped_item.add_health
+        # Removes one use everytime the healable is used.
         self.equipped_item.uses -= 1
+        # Prints how much health the player has left.
         print(f"You now have {self.player.health} health")
 
     def attack(self):
