@@ -13,7 +13,6 @@ class Player:
     def __init__(self, inventory, health, item):
         self.inventory = inventory
         self.health = health
-        self.victory = False
         self.equipped_item = item
         self.random = ["Escaped", "Failed"]
 
@@ -32,6 +31,6 @@ class Player:
         message = "Your Inventory:\n"
         for self.item in self.inventory:
             message += "- " + str(self.item).title(
-            ) + f""":\n - {self.item.description} 
+            ) + f""":\n - {self.item.description}
  - Uses: {self.item.uses}\n"""
         return message

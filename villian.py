@@ -4,14 +4,15 @@
 # Date last modified: 2020-10-25
 # Name: Aarsh Shah
 # Description: Creates a parent class and sub class for the creation of
-# the villian.
+# the enemies.
 
 import random
 
 
 class Villian():
-    """A parent-class for the characteristics of the enemies including their 
-    name, description, health and the amount of damage they can deal"""
+    """A parent-class for the characteristics of the enemies including their
+    name, description, health and the amount of damage they can deal.
+    """
     def __init__(self, name, description, health, amount):
         self.name = name
         self.name = description
@@ -23,13 +24,13 @@ class Villian():
         return self.name
 
     def alive(self):
-        """The enemies will stay alive as
-        long as they have more than 0 health"""
+        """The enemies will stay alive as long as they have more than 0 health.
+        """
         return self.health > 0
 
 
 class Immortalman(Villian):
-    """A class for the main enemy of the game"""
+    """A class for the main enemy of the game."""
     def __init__(self):
         self.name = "Immortal Man"
         self.description = "horrifying beast who lives in this cave"
@@ -38,12 +39,13 @@ class Immortalman(Villian):
 
     def damage(self):
         """Randomly chooses the amount of damage that Immortal Man
-        will deal from a list"""
+        will deal from a list.
+        """
         return random.choice(self.amount)
 
 
 class Knight(Villian):
-    """A class for the enemies of the game"""
+    """A class for the enemies of the game."""
     def __init__(self):
         self.name = "Knight"
         self.description = "noble warrior bred to protect"
@@ -52,5 +54,6 @@ class Knight(Villian):
 
     def damage(self):
         """Randomly chooses the amount of damage that the enemy
-        will deal from a list"""
+        will deal from a list.
+        """
         return random.choice(self.amount)

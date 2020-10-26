@@ -5,8 +5,9 @@
 # Name: Aarsh Shah
 # Description: Creates the starting menu that is used to start the game.
 
+
 def quit():
-    """A function used within menu's so that the user can end the game
+    """A function used within menu's so that the user can end the game.
     """
     print("\nEnd Game")
     exit()
@@ -46,4 +47,3 @@ people for help.\
             else:
                 print("Please Try Again")
                 continue
-

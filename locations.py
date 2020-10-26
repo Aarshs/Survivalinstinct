@@ -3,8 +3,7 @@
 # Date created: 2020-10-15
 # Date last modified: 2020-10-25
 # Name: Aarsh Shah
-# Description: Creates a parent class and sub class for the creation of
-# the different locations.
+# Description: Creates variables for the different locations.
 
 from colorama import Fore, Style
 

@@ -10,10 +10,12 @@ from items import *
 from locations import *
 from villian import Immortalman, Knight
 
+
 class Maps:
     """Creates a class that creates dictionaries and nested lists for the maps
     of the game, as well as setting the starting postion if the player moves
-    to a new location"""
+    to a new location.
+    """
     def __init__(self):
         # Stores the large map where the player starts.
         self.large = {
@@ -55,7 +57,7 @@ class Maps:
             ],
             # Sets the default postion of the map.
             "default_pos": [5, 2],
-            "description": """Crashed Commerical Plane where important items 
+            "description": """Crashed Commerical Plane where important items
 may be found""",
         }
         # Stores the cave map where the immortal mans can be found.
@@ -116,6 +118,6 @@ may be found""",
             ],
             # Sets the default postion of the map.
             "default_pos": [3, 0],
-            "description": """The Jungle is the general area 
+            "description": """The Jungle is the general area
 to explore to find items""",
         }
