@@ -1,7 +1,7 @@
 # Course: CS 30
 # Period: 1
 # Date created: 2020-10-07
-# Date last modified: 2020-10-25
+# Date last modified: 2020-10-27
 # Name: Aarsh Shah
 # Description: Uses tabulate and colorama libraries to create
 # different maps for the different locations of the game.

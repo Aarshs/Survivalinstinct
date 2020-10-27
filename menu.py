@@ -1,7 +1,7 @@
 # Course: CS 30
 # Period: 1
 # Date created: 2020-09-30
-# Date last modified: 2020-10-25
+# Date last modified: 2020-10-27
 # Name: Aarsh Shah
 # Description: Creates the starting menu that is used to start the game.
 

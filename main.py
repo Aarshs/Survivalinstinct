@@ -1,7 +1,7 @@
 # Course: CS 30
 # Period: 1
 # Date created: 2020-10-08
-# Date last modified: 2020-10-25
+# Date last modified: 2020-10-27
 # Name: Aarsh Shah
 # Description: Imports modules/ classes and creates a map with different game
 # tiles with user inputted movement, attacking, healing and more.
@@ -102,6 +102,7 @@ Left, Right, Up, or Down?
 
     def boundaries(self):
         """Method to prevent the user from going outside of the map."""
+        # Creates map boundaries.
         if (self.pos[0] < 0 or self.pos[0] >= len(self.current_map)
                 or self.pos[1] < 0
                 or self.pos[1] >= len(self.current_map[self.pos[0]])):
@@ -114,6 +115,7 @@ Left, Right, Up, or Down?
             # Checks to see if the player is on a map hotspot.
             if self.current_map == hotspot["map"][
                     "locations"] and self.pos == hotspot["pos"]:
+                # Changes the map if they are on a hotspot.
                 self.change_map(hotspot["new_map"])
 
     def positioning(self):
@@ -124,13 +126,14 @@ Left, Right, Up, or Down?
         self.enemy = self.enemy_map[self.y][self.x]
 
     def add_items(self):
-        """Adds items to character if they come accross it in the map."""
+        """Adds items to character if they come across it in the map."""
         # Sets the positon to x and y coordinates.
         y, x = self.pos
         # Variable to store what item is being picked up in respect to the map.
         item = self.item_map[y][x]
         # Checks if there is an item in the position of the player.
         if item != None and isinstance(item, Item):
+            # Removes the item off the map.
             self.item_map[y][x] = None
             # Adds the new item to the inventory.
             self.player.inventory.append(item)
@@ -144,7 +147,7 @@ Left, Right, Up, or Down?
         # Checks if there is an enemy in the position of the player.
         if self.enemy != None and isinstance(self.enemy, Villian):
             self.item_map[self.y][self.x] = None
-            # Calls the menu methood which allows the user to react.
+            # Calls the menu method which allows the user to react.
             self.pending_message = self.menu1()
 
     def menu1(self):
@@ -161,6 +164,7 @@ What do you want to do?
 2. Equip
 > \
 """).lower()
+            # Checks to see what the user chose.
             if option in ("run", "1"):
                 print("You are attempting to run")
                 # Variable that chooses a random choice from the random list.
@@ -172,6 +176,7 @@ What do you want to do?
                 elif option == "Failed":
                     print("You couldn't get away")
                     return self.equip()
+            # Calls the equip method if the user chooses to fight.
             elif option in ("equip", "2"):
                 return self.equip()
             elif option == "quit":
@@ -222,7 +227,7 @@ What do you want to do?
             print("""\
 You killed the Immortal Man!
 He was stashing the radio in his house.
-YOU HAVE ESCPAED, CONGRATS""")
+YOU HAVE ESCAPED, CONGRATS""")
             quit()
         # Returns a statement if you are successful in killing the enemy.
         else:

@@ -26,3 +26,4 @@ v2.0
 - added code in main game file to allow for enemies to be removed from the map once they are killed
 - added code in main game file to allow for the game to end once the player completes the goal
 - Removed redunancies within the program
+- optimized program
